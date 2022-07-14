@@ -22,7 +22,7 @@ body {
 
 h1 {
   font-family: "Montserrat", sans-serif;
-  color: var(--dlk-color);
+  color: #083c44;
   text-align: center;
   font-size: min(8vh, 8vw);
   font-weight: normal;
