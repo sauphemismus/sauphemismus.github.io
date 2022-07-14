@@ -67,7 +67,7 @@ function generate() {
       "share"
     ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #083c44;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ${sauphemismus}?';" id="whatsapp">
       ${whatsapp_btn}
-      <p>Einladen</p>  
+      <p>Teilen</p>  
         </button>`;
   });
 }
