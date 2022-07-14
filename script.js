@@ -39,7 +39,7 @@ function generate() {
     var rand = Math.floor(Math.random() * outArray.length);
     var sauphemismus = outArray[26];
     var nice = 69;
-    if (sauphemismus.length > nice || sauphemismus.length < 3) {
+    if (sauphemismus.length > nice || sauphemismus.length < 3 || isNaughty(sauphemismus)) {
       generate();
       return;
     }
@@ -67,7 +67,7 @@ function generate() {
       "share"
     ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #083c44;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ${sauphemismus}?';" id="whatsapp">
       ${whatsapp_btn}
-      <p>Teilen</p>  
+      <p>Einladen</p>  
         </button>`;
   });
 }
@@ -91,4 +91,37 @@ function toggle_history() {
     arrow_left.style.transform = "rotate(45deg)";
     arrow_right.style.transform = "rotate(-45deg)";
   }
+}
+
+// check if any string in array is substring of another
+function isNaughty(str) {
+  var naughty = [
+    "vergewalt",
+    "schwul",
+    "lesbisch",
+    "fick",
+    "schlampe",
+    "nutte",
+    "wichser",
+    "hure",
+    "schwuchtel",
+    "selbstmord",
+    "abtreib",
+    "neger",
+    "nigger",
+    "bimbo",
+    "behindert",
+    "weib ",
+    "bitch",
+    "fotze",
+    "muschi",
+    "}"
+  ];
+
+  str = str.toLowerCase();
+
+  for (var i = 0; i < naughty.length; i++) {
+    if (str.includes(naughty[i])) return true;
+  }
+  return false;
 }
