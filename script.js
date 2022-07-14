@@ -39,7 +39,7 @@ function generate() {
     var rand = Math.floor(Math.random() * outArray.length);
     var sauphemismus = outArray[26];
     var nice = 69;
-    if (sauphemismus.length > nice || sauphemismus.length < 3 || isNaughty(sauphemismus)) {
+    if (sauphemismus.length > nice || sauphemismus.length <3 || isNaughty(sauphemismus)) {
       generate();
       return;
     }
