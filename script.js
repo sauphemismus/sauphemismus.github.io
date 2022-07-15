@@ -118,11 +118,13 @@ function isNaughty(str) {
     "hakenkreuz",
     "vergasen",
     "nazi",
+    "nationalsozialismus",
     "konzentrationslager",
     "jude",
     "jüdin",
     "jüdisch",
     "hitler",  
+    " führer ",
     "}"
   ];
 
