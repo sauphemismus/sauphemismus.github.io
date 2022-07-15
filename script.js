@@ -46,6 +46,11 @@ function generate() {
     var sauphemismus =
       sauphemismus.substring(0, 1).toLowerCase() +
       sauphemismus.substring(1, sauphemismus.length - 1);
+    
+    //grammar-stuff
+    sauphemismus = sauphemismus.replace("einen einen", "einen");
+    sauphemismus = sauphemismus.replace("sich einen sich einen", "sich einen");
+    
     document.getElementsByClassName("loader")[0].style.display = "none";
     //update history
     try {
