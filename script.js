@@ -115,6 +115,14 @@ function isNaughty(str) {
     "bitch",
     "fotze",
     "muschi",
+    "hakenkreuz",
+    "vergasen",
+    "nazi",
+    "konzentrationslager",
+    "jude",
+    "jüdin",
+    "jüdisch",
+    "hitler",  
     "}"
   ];
 
