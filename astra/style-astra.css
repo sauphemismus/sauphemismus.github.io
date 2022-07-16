@@ -49,7 +49,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  min-height: 45vh;
+  min-height: 500px;
 }
 
 @media (min-width: 1025px) {
@@ -66,6 +66,7 @@ h1 {
   min-height: 4.5em;
   display: flex;
   justify-content: center;
+  
 }
 
 h2 {
@@ -135,9 +136,13 @@ h2 {
   gap: 0.5em;
 }
 
-.button1:hover {
-  box-shadow: 0 0.5em 1em -0.5em #000;
+@media (hover:hover){
+  .button1:hover {
+    /*box-shadow: 0 0.5em 1em -0.5em #000;*/
+    box-shadow: 0 0 4px black;
+  }
 }
+
 
 .loader {
   font-size: min(4vh, 4vw);
@@ -218,12 +223,10 @@ h3 {
 }
 
 .button2 {
-  opacity: 80%;
   display: flex;
   align-items: center;
   border-radius: 0%;
   border: none;
-  border-bottom: 0.2em solid #fff;
   background-color: transparent;
   padding: 0;
   padding-bottom: -0.3em;
@@ -233,10 +236,18 @@ h3 {
   user-select: none;
   color: #fff;
   -webkit-text-stroke: none;
+  background-image: url("https://www.astra-bier.de/img/bg-red.jpg");
   background-color: #c20634;
   text-shadow: none;
-  border: 0.2em solid #fff;
+  transform: skewX(-10deg);
+  transition: all 0.2s ease-in-out;
 }
+@media (hover:hover){
+  .button2:hover{
+  box-shadow: 0.2em 0.2em #000;
+  }
+}
+
 .button2:hover {
   opacity: 100%;
 }
@@ -341,7 +352,7 @@ h3 {
   font-size: 5rem;
   z-index: 10000;
   color: #fff;
-  opacity: 70%;
+  opacity: 50%;
   text-shadow: none;
   text-align: center;
   top: 30%;
