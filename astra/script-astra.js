@@ -64,7 +64,7 @@ function generate() {
       '<h1 id="sauphemismus">...' + sauphemismus + "?</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/astra%0a%0aHey, bock heute Abend ${sauphemismus}?';" id="whatsapp">
+    ).innerHTML = `<button class="button2" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/astra%0a%0aHey, bock heute Abend ${sauphemismus}?';" id="whatsapp">
       ${whatsapp_btn}
       <p>Teilen</p>  
         </button>`;
