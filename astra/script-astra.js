@@ -27,7 +27,7 @@ function generate() {
     parameters: {
       min_length: 500,
       max_length: 500,
-      temperature: Math.random() * 0.1 + 0.8,
+      temperature: Math.random() * 0.05 + 0.8,
     },
     options: {
       wait_for_model: true,
