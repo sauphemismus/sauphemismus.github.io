@@ -49,6 +49,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  min-height: 500px;
 }
 
 @media (min-width: 1025px) {
@@ -83,6 +84,7 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 1em;
+  padding: 1em;
 }
 
 .title img{
@@ -94,17 +96,25 @@ h2 {
   height: 4.5em;
 }
 
+@media (max-width: 1024px) {
+  #anker-right{
+    display: none;
+  }
 
+  .title{
+    flex-direction: column;
+  }
 
-
-h2 a{
-  all: unset;
-  cursor: pointer;
+  .title img{
+    height: 5em;
+  }
+  .title img:hover{
+    height: 5.5em;
+  }
 }
-h2 a:hover{
-  color: #dd1547;
-  text-shadow:1px  1px 1px black, 1px -1px 1px black, -1px  1px 1px black, -1px -1px 1px black, 0 0 0.3em #c20634;
-}
+
+
+
 
 .button1 {
   user-select: none;
