@@ -52,7 +52,7 @@ function generate() {
       var last_sauphi = document.getElementById("sauphemismus").innerHTML;
       last_sauphi = last_sauphi.replace("...", "");
       history.innerHTML +=
-        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ' +
+        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/astra%0a%0aHey, bock heute Abend ' +
         last_sauphi +
         '">Bock heute Abend ' +
         last_sauphi +
