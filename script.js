@@ -137,6 +137,9 @@ function isNaughty(str) {
     "weiss",
     "rassist",
     "sexist",
+    " eichel ",
+    " sperma ",
+    " porn",
     "}"
   ];
 
