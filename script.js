@@ -110,6 +110,7 @@ function isNaughty(str) {
     "wichser",
     "hure",
     "schwuchtel",
+    " homo",
     "selbstmord",
     "abtreib",
     "neger",
@@ -130,6 +131,12 @@ function isNaughty(str) {
     "jüdisch",
     "hitler",  
     " führer ",
+    "hautfarbe",
+    "schwarz",
+    "weiß",
+    "weiss",
+    "rassist",
+    "sexist",
     "}"
   ];
 
