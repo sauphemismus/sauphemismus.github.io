@@ -59,7 +59,7 @@ function generate() {
       document.getElementById("toggle-history").style.display = "flex";
     } catch (e) {}
     document.getElementById("query").innerHTML =
-      '<h1 id="ausreden">' + ausreden + ", sorry!</h1>";
+      '<h1 id="ausreden">...' + ausreden + ", sorry!</h1>";
     document.getElementById(
       "share"
     ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/ausrede/%0a%0aTut mir leid, ${ausreden}, sorry!';" id="whatsapp">
