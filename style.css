@@ -17,6 +17,7 @@ body {
   background-color: var(--color-4);
   font-size: max(1.5vh, 1.5vw);
   font-weight: normal;
+  overflow: overlay;
 }
 
 #vh100 {
@@ -225,7 +226,6 @@ h2{
 /*----------------------------------------------------------------------------*/
 #bubbles1 .bubble{
   background-color: var(--color-1);
-
   z-index: -10;
 }
 #bubbles2 .bubble{
@@ -235,6 +235,15 @@ h2{
 #bubbles3 .bubble{
   background-color: var(--color-3);
   z-index: -12;
+}
+#sparkling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 
@@ -333,4 +342,19 @@ h2{
   .background #background3 div{
     height: 40vh;
   }
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: var(--color-4);
+  border-radius: 10px;
 }
