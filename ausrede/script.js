@@ -53,7 +53,7 @@ function generate() {
       var last_sauphi = document.getElementById("ausreden").innerHTML;
       last_sauphi = last_sauphi.replace("...", "");
       history.innerHTML +=
-        '<li><a href="whatsapp://send?text=https://ausreden.github.io/%0a%0aTut mir leid, ' +
+        '<li><a href="whatsapp://send?text=https://sauphemusmis.github.io/ausrede/%0a%0aTut mir leid, ' +
         last_sauphi +
         '">Tut mir leid, ' +
         last_sauphi +
@@ -65,7 +65,7 @@ function generate() {
       '<h1 id="ausreden">' + ausreden + ", sorry!</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #083c44;" onclick="location.href='whatsapp://send?text=https://ausreden.github.io/%0a%0aTut mir leid, ${ausreden}, sorry!';" id="whatsapp">
+    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #083c44;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/ausrede/%0a%0aTut mir leid, ${ausreden}, sorry!';" id="whatsapp">
       ${whatsapp_btn}
       <p>Absagen</p>  
         </button>`;
