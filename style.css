@@ -1,8 +1,16 @@
 :root{
+  /*
   --color-1: #395E66;
   --color-2: #387D7A;
   --color-3: #32936F;
   --color-4: #26A96C;
+  */
+  --color-1: #DF8D03;
+  --color-2: #EC9D00;
+  --color-3: #F6C101;
+  --color-4: #FAE96F;
+
+
   --text-color: #ffffff;
 }
 
@@ -248,11 +256,13 @@ h2{
 
 
 .bubble{
+  opacity: 50%;
   position: absolute;
   bottom: 0;
   border-radius: 50%;
   aspect-ratio: 1;
   animation: float linear;
+  border: #ffffff solid 0.1em;
 }
 
 /* animation float*/
@@ -284,13 +294,16 @@ h2{
 }
 .background #bg1 {
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   height: min-content;
   margin: 0;
   padding: 0;
 }
+#bg1 path{
+  fill: var(--color-1);
+}
 .background #background1 div{
-  width: 100%;
+  width: 100vw;
   background-color: var(--color-1);
 }
 
@@ -303,13 +316,16 @@ h2{
 }
 .background #bg2 {
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   height: min-content;
   margin: 0;
   padding: 0;
 }
+#bg2 path{
+  fill: var(--color-2);
+}
 .background #background2 div{
-  width: 100%;
+  width: 100vw;
   background-color: var(--color-2);
 }
 
@@ -322,25 +338,28 @@ h2{
 }
 .background #bg3 {
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   height: min-content;
   margin: 0;
   padding: 0;
 }
+#bg3 path{
+  fill: var(--color-3);
+}
 .background #background3 div{
-  width: 100%;
+  width: 100vw;
   background-color: var(--color-3);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   .background #background1 div{
-    height: 10vh;
+    height: 15vh;
   }
   .background #background2 div{
-    height: 25vh;
+    height: 30vh;
   }
   .background #background3 div{
-    height: 40vh;
+    height: 45vh;
   }
 }
 
