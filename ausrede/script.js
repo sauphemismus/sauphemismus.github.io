@@ -139,7 +139,7 @@ function isNaughty(str) {
     "attentat",
     "bombe",
     "gestorben",
-    " tot ",
+    " tot",
     "stirbt",
     "schlaganfall",
     "massaker",       
