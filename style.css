@@ -1,10 +1,22 @@
+:root{
+  --color-1: #395E66;
+  --color-2: #387D7A;
+  --color-3: #32936F;
+  --color-4: #26A96C;
+  --text-color: #ffffff;
+}
+
 body {
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
+  background-color: var(--color-4);
+  font-size: max(1.5vh, 1.5vw);
+  font-weight: normal;
 }
 
 #vh100 {
@@ -20,59 +32,39 @@ body {
   }
 }
 
-h1 {
-  font-family: "Montserrat", sans-serif;
-  color: #083c44;
-  text-align: center;
-  font-size: min(8vh, 8vw);
-  font-weight: normal;
-  line-height: 1.5em;
-  min-height: 4.5em;
-  display: flex;
-  justify-content: center;
+
+
+h2{
+  font-size: 2em;
 }
 
-h2 {
-  font-family: "Montserrat", sans-serif;
-  font-size: min(10vh, 10vw);
-  font-weight: thin;
-  line-height: 1em;
-  padding-bottom: 0em;
-  color: #083c44;
-}
 .button1 {
+  background-color: transparent;
   user-select: none;
   width: fit-content;
   text-decoration: none;
-  color: #083c44;
+  color: #fff;
   padding: 0.3em 1.5em;
   font-size: min(4vh, 4vw);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  border: 0.2em solid #083c44;
+  border: 0.2em solid #fff;
   font-family: "Montserrat", sans-serif;
   display: flex;
   align-items: center;
   gap: 0.5em;
 }
 
-.button1:hover {
-  background-color: #083c44;
-  color: #fff;
-}
-
 .loader {
-  font-size: min(4vh, 4vw);
-  border: 0.2em solid #e3e3e3;
-  border-top: 0.2em solid #083c44;
+  border: 0.2em solid #fff;
+  border-top: 0.2em solid var(--color-1);
   border-radius: 50%;
   width: 1em;
   height: 1em;
   animation: spin 2s linear infinite;
   display: none;
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -91,16 +83,7 @@ h2 {
   gap: 0em;
 }
 
-h3 {
-  font-family: "Montserrat", sans-serif;
-  font-size: min(4vh, 4vw);
-  font-weight: normal;
-  margin-top: 2rem;
-  user-select: none;
-}
-
 #history {
-  font-size: 1.8em;
   list-style: none;
   font-family: "Montserrat", sans-serif;
   width: 80vw;
@@ -112,6 +95,25 @@ h3 {
 
 #history li {
   cursor: pointer;
+}
+
+#history a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+#history a:hover {
+  font-weight: bolder;
+}
+
+#share_history {
+  display: flex;
+  gap: 3em;
+  margin-bottom: 0.5em;
 }
 
 .arrow {
@@ -128,7 +130,7 @@ h3 {
   position: absolute;
   width: 0.75em;
   height: 0.1em;
-  background: #083c44;
+  background: var(--text-color);
   display: inline-block;
   transition: all 0.2s ease;
 }
@@ -147,7 +149,7 @@ h3 {
   align-items: center;
   border-radius: 0%;
   border: none;
-  border-bottom: 0.2em solid #083c44;
+  border-bottom: 0.2em solid #fff;
   background-color: transparent;
   padding: 0;
   padding-bottom: -0.3em;
@@ -158,7 +160,7 @@ h3 {
 }
 .button2 p {
   font-size: 1.5em;
-  color: #083c44;
+  color: #fff;
   display: inline-block;
   line-height: 0%;
   font-weight: normal;
@@ -168,25 +170,6 @@ h3 {
   width: 1.8em;
   height: 1.8em;
   margin-right: 0.5em;
-}
-
-#share_history {
-  display: flex;
-  gap: 3em;
-  margin-bottom: 0.5em;
-}
-
-#history a {
-  text-decoration: none;
-  color: #083c44;
-  font-size: 1em;
-  font-family: "Montserrat", sans-serif;
-  font-weight: normal;
-  cursor: pointer;
-}
-
-#history a:hover {
-  font-weight: bolder;
 }
 
 #info {
@@ -199,13 +182,18 @@ h3 {
 
 #info-toggle-btn {
   position: fixed;
-  right: 0.1em;
-  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  right: 0.2em;
+  bottom: 0.2em;
   z-index: 1000;
-  color: #083c44;
+  color: #fff;
   font-size: 2.5em;
   user-select: none;
   cursor: pointer;
+  height: 0.8em;
+  width: 0.8em;
 }
 
 #info-toggle-btn svg {
@@ -214,10 +202,9 @@ h3 {
 }
 
 #info-card {
-  color: #083c44;
-  background-color: #fff;
-  border-radius: 0.5em;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  background-color: #00000020;
   padding: 1em;
   padding-right: 3em;
   position: fixed;
@@ -232,4 +219,119 @@ h3 {
 
 #info-toggle:checked ~ #info-card {
   right: -100%;
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+#bubbles1 .bubble{
+  background-color: var(--color-1);
+
+  z-index: -10;
+}
+#bubbles2 .bubble{
+  background-color: var(--color-2);
+  z-index: -11;
+}
+#bubbles3 .bubble{
+  background-color: var(--color-3);
+  z-index: -12;
+}
+
+
+.bubble{
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  animation: float linear;
+}
+
+/* animation float*/
+@keyframes float {
+  0% {
+    transform: translateY(0);	
+  }
+  100% {
+    transform: translateY(-300vh);
+    opacity: 0%;
+  }
+}
+
+
+.background {
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+}
+
+
+.background #background1{
+  z-index: -10;
+  display: grid;
+  position: fixed;
+  bottom: 0;
+}
+.background #bg1 {
+  bottom: 0;
+  width: 100%;
+  height: min-content;
+  margin: 0;
+  padding: 0;
+}
+.background #background1 div{
+  width: 100%;
+  background-color: var(--color-1);
+}
+
+
+.background #background2{
+  z-index: -11;
+  display: grid;
+  position: fixed;
+  bottom: 0;
+}
+.background #bg2 {
+  bottom: 0;
+  width: 100%;
+  height: min-content;
+  margin: 0;
+  padding: 0;
+}
+.background #background2 div{
+  width: 100%;
+  background-color: var(--color-2);
+}
+
+
+.background #background3{
+  z-index: -12;
+  display: grid;
+  position: fixed;
+  bottom: 0;
+}
+.background #bg3 {
+  bottom: 0;
+  width: 100%;
+  height: min-content;
+  margin: 0;
+  padding: 0;
+}
+.background #background3 div{
+  width: 100%;
+  background-color: var(--color-3);
+}
+
+@media (max-width: 800px) {
+  .background #background1 div{
+    height: 10vh;
+  }
+  .background #background2 div{
+    height: 25vh;
+  }
+  .background #background3 div{
+    height: 40vh;
+  }
 }
