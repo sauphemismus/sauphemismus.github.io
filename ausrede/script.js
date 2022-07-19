@@ -180,6 +180,6 @@ function sparkle() {
   var c = Math.floor(Math.random() * 5) + 5;
   createNBubbles(a, 1);
   createNBubbles(b, 2);
-  createNBubbles(c, 3);s
+  createNBubbles(c, 3);
 }
 
