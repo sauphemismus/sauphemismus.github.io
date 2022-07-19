@@ -4,11 +4,17 @@
   --color-2: #387D7A;
   --color-3: #32936F;
   --color-4: #26A96C;
-  */
+  
   --color-1: #DF8D03;
   --color-2: #EC9D00;
   --color-3: #F6C101;
   --color-4: #FAE96F;
+  */
+
+  --color-1: #184E77;
+  --color-2: #1A759F;
+  --color-3: #34A0A4;
+  --color-4: #76C893;
 
 
   --text-color: #ffffff;
@@ -256,13 +262,11 @@ h2{
 
 
 .bubble{
-  opacity: 50%;
   position: absolute;
   bottom: 0;
   border-radius: 50%;
   aspect-ratio: 1;
   animation: float linear;
-  border: #ffffff solid 0.1em;
 }
 
 /* animation float*/
@@ -298,6 +302,7 @@ h2{
   height: min-content;
   margin: 0;
   padding: 0;
+  filter: drop-shadow(0 0 0.5em var(--color-1));
 }
 #bg1 path{
   fill: var(--color-1);
@@ -320,6 +325,7 @@ h2{
   height: min-content;
   margin: 0;
   padding: 0;
+  filter: drop-shadow(0 0 0.5em var(--color-2));
 }
 #bg2 path{
   fill: var(--color-2);
@@ -342,6 +348,7 @@ h2{
   height: min-content;
   margin: 0;
   padding: 0;
+  filter: drop-shadow(0 0 0.5em var(--color-3));
 }
 #bg3 path{
   fill: var(--color-3);
@@ -362,11 +369,14 @@ h2{
     height: 45vh;
   }
 }
+::selection {
+  background: var(--color-4);
+  color: #fff;
+}
 
 ::-webkit-scrollbar {
   width: 20px;
 }
-
 
 ::-webkit-scrollbar-track {
   background: transparent;
