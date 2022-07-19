@@ -135,6 +135,14 @@ function isNaughty(str) {
     " eichel ",
     " sperma ",
     " porn",
+    "anschlag",
+    "attentat",
+    "bombe",
+    "gestorben",
+    "tot",
+    "stirbt",
+    "schlaganfall",
+    "massaker",       
     "}"
   ];
 
