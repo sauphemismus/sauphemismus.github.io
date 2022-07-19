@@ -53,7 +53,7 @@ function generate() {
       var last_sauphi = document.getElementById("ausreden").innerHTML;
       last_sauphi = last_sauphi.replace("...", "");
       history.innerHTML +=
-        '<li><a href="whatsapp://send?text=https://sauphemusmis.github.io/ausrede/%0a%0aTut mir leid, ' +
+        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/ausrede/%0a%0aTut mir leid, ' +
         last_sauphi +
         '">Tut mir leid, ' +
         last_sauphi +
