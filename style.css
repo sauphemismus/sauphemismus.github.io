@@ -302,7 +302,7 @@ h2{
   height: min-content;
   margin: 0;
   padding: 0;
-  filter: drop-shadow(0 0 0.5em var(--color-1));
+  filter: drop-shadow(0 0 1em #000);
 }
 #bg1 path{
   fill: var(--color-1);
@@ -325,7 +325,7 @@ h2{
   height: min-content;
   margin: 0;
   padding: 0;
-  filter: drop-shadow(0 0 0.5em var(--color-2));
+  filter: drop-shadow(0 0 1em #000);
 }
 #bg2 path{
   fill: var(--color-2);
@@ -348,7 +348,7 @@ h2{
   height: min-content;
   margin: 0;
   padding: 0;
-  filter: drop-shadow(0 0 0.5em var(--color-3));
+  filter: drop-shadow(0 0 1em #000);
 }
 #bg3 path{
   fill: var(--color-3);
