@@ -45,6 +45,10 @@ function generate() {
     var sauphemismus =
       sauphemismus.substring(0, 1).toLowerCase() +
       sauphemismus.substring(1, sauphemismus.length - 1);
+    sauphemismus = sauphemismus.replace("einen einen", "einen");
+    sauphemismus = sauphemismus.replace("einen einem", "einem");
+    sauphemismus = sauphemismus.replace("einen in einen", "in einen");
+    sauphemismus = sauphemismus.replace("einen in einem", "in einem");
     document.getElementsByClassName("loader")[0].style.display = "none";
     //update history
     try {
