@@ -49,6 +49,9 @@ function generate() {
     sauphemismus = sauphemismus.replace("einen einem", "einem");
     sauphemismus = sauphemismus.replace("einen in einen", "in einen");
     sauphemismus = sauphemismus.replace("einen in einem", "in einem");
+    sauphemismus = sauphemismus.replace("einen als einen", "als einen");
+    sauphemismus = sauphemismus.replace("einen als eine", "als eine");
+    sauphemismus = sauphemismus.replace("einen mit einem", "mit einem");
     document.getElementsByClassName("loader")[0].style.display = "none";
     //update history
     try {
