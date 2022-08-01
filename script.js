@@ -1,3 +1,8 @@
+var prefix_big = "..."
+var prefix_msg = "Hey, bock heute Abend "
+var lowercase = true
+var suffix = "?"
+
 var whatsapp_btn = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
   width="24" height="24"
   viewBox="0 0 24 24"
@@ -42,9 +47,11 @@ function generate() {
       generate();
       return;
     }
+    if(lowercase){
     var sauphemismus =
       sauphemismus.substring(0, 1).toLowerCase() +
       sauphemismus.substring(1, sauphemismus.length - 1);
+    }
     sauphemismus = sauphemismus.replace("einen einen", "einen");
     sauphemismus = sauphemismus.replace("einen einem", "einem");
     sauphemismus = sauphemismus.replace("einen in einen", "in einen");
@@ -57,21 +64,21 @@ function generate() {
     try {
       var history = document.getElementById("history");
       var last_sauphi = document.getElementById("sauphemismus").innerHTML;
-      last_sauphi = last_sauphi.replace("...", "");
+      last_sauphi = last_sauphi.replace(prefix_big, "");
       history.innerHTML +=
-        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ' +
+        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/%0a%0a' + prefix_msg +
         last_sauphi +
-        '">Bock heute Abend ' +
+        '">'+ prefix_msg +
         last_sauphi +
         "</a></li>";
       history_FIFO();
       document.getElementById("toggle-history").style.display = "flex";
     } catch (e) {}
     document.getElementById("query").innerHTML =
-      '<h1 id="sauphemismus">...' + sauphemismus + "?</h1>";
+      '<h1 id="sauphemismus">'+ prefix_big + sauphemismus + suffix "</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ${sauphemismus}?';" id="whatsapp">
+    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0a${prefix_msg}${sauphemismus}${suffix}';" id="whatsapp">
       ${whatsapp_btn}
       <p>Einladen</p>  
         </button>`;
