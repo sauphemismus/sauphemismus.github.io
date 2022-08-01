@@ -51,7 +51,7 @@ function generate() {
       var last_sauphi = document.getElementById("sauphemismus").innerHTML;
       last_sauphi = last_sauphi.replace("...", "");
       history.innerHTML +=
-        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/%0a%0a' +
+        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/sprichworte/%0a%0a' +
         last_sauphi +
         '">' +
         last_sauphi +
@@ -63,7 +63,7 @@ function generate() {
       '<h1 id="sauphemismus">' + sauphemismus + "</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0a${sauphemismus}';" id="whatsapp">
+    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/sprichworte/%0a%0a${sauphemismus}';" id="whatsapp">
       ${whatsapp_btn}
       <p>Weisheit teilen</p>  
         </button>`;
