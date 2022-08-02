@@ -54,7 +54,6 @@ document.onload = init();
 
 function randomBg(){
   width = document.documentElement.clientWidth;
-  alert(width);
   height = document.documentElement.clientHeight;
   random = Math.floor(Math.random() * 10000);
   
