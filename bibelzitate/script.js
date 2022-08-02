@@ -55,11 +55,11 @@ document.onload = init();
 function randomBg(){
   var ratio = window.devicePixelRatio || 1;
   var width = screen.width * ratio;
-  var height = screen.height * ratio;
-  alert(width + " " + height);
+  var height = screen.height;
+  var random = Math.floor(Math.random() * 10000);
   
   div = document.getElementById("bg_div");
-  div.innerHTML = '<img id="background" src="https://source.unsplash.com/random/' + width + 'x' + height + '/?nature">';
+  div.innerHTML = '<img id="background" src="https://source.unsplash.com/random/' + width + 'x' + height + '/?nature,'+ random +'">';
 }
 
 function randomFont(){
