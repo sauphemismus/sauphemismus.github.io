@@ -85,7 +85,6 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   
   
     generate(
-      //"Herbert*Rüdiger*Matthäus*Jakob*Johannes*Peter*Christian*Michael*Paul*Hans*Günther*Klaus*Martin*Andreas*Thomas*Harald*Jan*Gerd*Ralf*Frank*Armin*Holger*Thorsten*Hans-Jürgen*Fritz*Ulrich*Heinz*Nico*Markus*Uli*Hans-Dieter*Uwe*Rainer*Sven*Stefan*Dieter*Jürgen*",
       "Frank Dekelbach*Barbara Tanzilli*Max Feind*Ernest Moore*Ursula Ewland*Judith Anne Vönt*Ralph Berndt*Wilfried Schlotter*Alfred Röthlisberger*Peter Zwerschke*Edith Bölke*Hans-Jürgen Dötsch*Anett Reisinger*Jürgen Brümmendorf*Antonia Hilmar*Simone Godelbrun*Leonie Geidenhart*Dirk Pinzone*Katharina Kirtola*Claudia Salomanov*Roland Huggenbusch*Vera Mitja Hofmeister*Michael Karlheinz Steinbildner*Antje Herrmann*",
       24, 1.0, 180, "*", neuerAutor);
   }
