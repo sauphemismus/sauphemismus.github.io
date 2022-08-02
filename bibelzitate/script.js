@@ -53,9 +53,10 @@ document.onload = init();
 
 
 function randomBg(){
-  width = screen.width;
-  height = screen.height;
-  random = Math.floor(Math.random() * 100);
+  width = document.documentElement.clientWidth;
+  alert(width);
+  height = document.documentElement.clientHeight;
+  random = Math.floor(Math.random() * 10000);
   
   div = document.getElementById("bg_div");
 
