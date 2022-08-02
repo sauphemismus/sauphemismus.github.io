@@ -53,13 +53,12 @@ document.onload = init();
 
 
 function randomBg(){
-  width = document.documentElement.clientWidth;
-  height = document.documentElement.clientHeight;
-  random = Math.floor(Math.random() * 10000);
+  var ratio = window.devicePixelRatio || 1;
+  var width = screen.width * ratio;
+  var height = screen.height * ratio;
   
   div = document.getElementById("bg_div");
-
-  div.innerHTML = '<img id="background" src="https://picsum.photos/' + width + '/' + height + '?random=' + random + '">';
+  div.innerHTML = '<img id="background" src="https://source.unsplash.com/random/' + width + 'x' + height + '/?nature">';
 }
 
 function randomFont(){
