@@ -47,7 +47,7 @@
     cursor: pointer;
     border-radius: 5px;
     margin: 0.5em;
-    font-family: Kalam;
+    font-family: Josefin Slab;
     text-align: center;
   }
   
@@ -157,4 +157,4 @@
     transform: rotate(360deg);
   }
   }
-  /*-----------------------------------------------------------------------------*/
+  /*----------------------------------------------------------------------------*/

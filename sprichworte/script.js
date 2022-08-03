@@ -45,6 +45,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   var running = false;
   var spruch_g = false;
   var autor_g = false;
+  var bio_g = false;
   
   
   document.onload = randomBg();
@@ -63,7 +64,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   }
   
   function randomFont(){
-    array = ["Caveat", "Kalam", "Mali", "Neucha"]
+    array = ["Josefin Slab", "Bodoni Moda", "Bitter", "Amatic SC", "Antic Slab", "Yeseva One"]
     random = Math.floor(Math.random() * array.length);
     return array[random];
   }
@@ -85,8 +86,13 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   
   
     generate(
+      //"Herbert*Rüdiger*Matthäus*Jakob*Johannes*Peter*Christian*Michael*Paul*Hans*Günther*Klaus*Martin*Andreas*Thomas*Harald*Jan*Gerd*Ralf*Frank*Armin*Holger*Thorsten*Hans-Jürgen*Fritz*Ulrich*Heinz*Nico*Markus*Uli*Hans-Dieter*Uwe*Rainer*Sven*Stefan*Dieter*Jürgen*",
       "Frank Dekelbach*Barbara Tanzilli*Max Feind*Ernest Moore*Ursula Ewland*Judith Anne Vönt*Ralph Berndt*Wilfried Schlotter*Alfred Röthlisberger*Peter Zwerschke*Edith Bölke*Hans-Jürgen Dötsch*Anett Reisinger*Jürgen Brümmendorf*Antonia Hilmar*Simone Godelbrun*Leonie Geidenhart*Dirk Pinzone*Katharina Kirtola*Claudia Salomanov*Roland Huggenbusch*Vera Mitja Hofmeister*Michael Karlheinz Steinbildner*Antje Herrmann*",
-      24, 1.0, 180, "*", neuerAutor);
+      24, 0.95, 180, "*", neuerAutor);
+
+    generate(
+      "mag gerne Pferde-hat ein Alkoholproblem-lernt gerne Leute kennen-ist im Nebenjob Barkeeper-studiert Philosophie im 3. Semester-ist begeisterter Hobbygärtnerin-hat keine echte Freundin-hat das Gefühl, alles zu können-hat einen Traum-hat das Gefühl, jemand zu lieben, den sie nicht lieben kann-hat ein spannendes Leben-fragt sich immer wieder, ob das Leben genug war-hat Lust auf Geld-hat das Gefühl, alles zu können-ist spät dran-denkt viel über sein Leben nach-ist glücklich, wenn es ihr gut geht-weiß nicht, was das Leben ihm bringen soll-hat eine Leidenschaft für Tischtennis-hat Lust auf jemanden, den er lieben könnte-ist unvoreingenommen-hat viele Güter in seinem Haus-ist zufrieden mit seinen persönlichen Fähigkeiten-schläft häufig-denkt oft über die Welt nach-",
+      25, 0.85, 360, "-", neuerAutorBio);
   }
   
   
@@ -112,6 +118,13 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
       show_new();
     else
       autor_g = true;
+  }
+
+  function neuerAutorBio(text){
+    var autor = document.getElementById("autor");
+  
+    autor.innerHTML += ", " + text;
+    
   }
   
   function show_new(){
