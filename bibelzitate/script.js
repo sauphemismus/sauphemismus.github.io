@@ -61,9 +61,15 @@ document.onload = document.getElementById("history").innerHTML = "";
 
 
 function randomBg(){
-  var ratio = window.devicePixelRatio || 1;
-  var width = window.innerWidth * ratio || document.documentElement.clientWidth * ratio;
-  var height = window.innerHeight * ratio || document.documentElement.clientHeight * ratio;
+  try{
+    var ratio = window.devicePixelRatio;
+    var width = window.innerWidth * ratio;
+    var height = window.innerHeight * ratio;
+  }
+  catch(e){
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+  }
   var random = Math.floor(Math.random() * 10000);
   
   if(background)
