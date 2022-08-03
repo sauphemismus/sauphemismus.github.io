@@ -62,18 +62,14 @@ document.onload = document.getElementById("history").innerHTML = "";
 
 function randomBg(){
   var ratio = window.devicePixelRatio || 1;
-  var width = window.innerWidth * ratio;
-  var height = window.innerHeight * ratio;
-  //var width = screen.width * ratio;
-  //var height = screen.height * ratio; 
+  var width = window.innerWidth * ratio || screen.width * ratio;
+  var height = window.innerHeight * ratio || screen.height * ratio;
   var random = Math.floor(Math.random() * 10000);
   
   if(background)
     div = document.getElementById("bg1");
   else div = document.getElementById("bg2");
   div.style.backgroundImage = "url('https://source.unsplash.com/random/" + width + "x" + height + "/?nature,&" + random + "')";
-
-  //div.innerHTML = '<img id="background" src="https://source.unsplash.com/random/' + width + 'x' + height + '/?nature,'+ random +'">';
 }
 
 function randomFont(){
