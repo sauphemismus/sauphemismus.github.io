@@ -90,9 +90,9 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
       "Frank Dekelbach*Barbara Tanzilli*Max Feind*Ernest Moore*Ursula Ewland*Judith Anne Vönt*Ralph Berndt*Wilfried Schlotter*Alfred Röthlisberger*Peter Zwerschke*Edith Bölke*Hans-Jürgen Dötsch*Anett Reisinger*Jürgen Brümmendorf*Antonia Hilmar*Simone Godelbrun*Leonie Geidenhart*Dirk Pinzone*Katharina Kirtola*Claudia Salomanov*Roland Huggenbusch*Vera Mitja Hofmeister*Michael Karlheinz Steinbildner*Antje Herrmann*",
       24, 0.95, 180, "*", neuerAutor);
 
-    generate(
-      "mag gerne Pferde-hat ein Alkoholproblem-lernt gerne Leute kennen-ist im Nebenjob Barkeeper-studiert Philosophie im 3. Semester-ist begeisterter Hobbygärtnerin-hat keine echte Freundin-hat das Gefühl, alles zu können-hat einen Traum-hat das Gefühl, jemand zu lieben, den sie nicht lieben kann-hat ein spannendes Leben-fragt sich immer wieder, ob das Leben genug war-hat Lust auf Geld-hat das Gefühl, alles zu können-ist spät dran-denkt viel über sein Leben nach-ist glücklich, wenn es ihr gut geht-weiß nicht, was das Leben ihm bringen soll-hat eine Leidenschaft für Tischtennis-hat Lust auf jemanden, den er lieben könnte-ist unvoreingenommen-hat viele Güter in seinem Haus-ist zufrieden mit seinen persönlichen Fähigkeiten-schläft häufig-denkt oft über die Welt nach-",
-      25, 0.85, 360, "-", neuerAutorBio);
+    //generate(
+    //  "mag gerne Pferde-hat ein Alkoholproblem-lernt gerne Leute kennen-ist im Nebenjob Barkeeper-studiert Philosophie im 3. Semester-ist begeisterter Hobbygärtnerin-hat keine echte Freundin-hat das Gefühl, alles zu können-hat einen Traum-hat das Gefühl, jemand zu lieben, den sie nicht lieben kann-hat ein spannendes Leben-fragt sich immer wieder, ob das Leben genug war-hat Lust auf Geld-hat das Gefühl, alles zu können-ist spät dran-denkt viel über sein Leben nach-ist glücklich, wenn es ihr gut geht-weiß nicht, was das Leben ihm bringen soll-hat eine Leidenschaft für Tischtennis-hat Lust auf jemanden, den er lieben könnte-ist unvoreingenommen-hat viele Güter in seinem Haus-ist zufrieden mit seinen persönlichen Fähigkeiten-schläft häufig-denkt oft über die Welt nach-",
+    //  25, 0.85, 360, "-", neuerAutorBio);
   }
   
   
@@ -111,8 +111,17 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   
   function neuerAutor(text){
     var autor = document.getElementById("autor");
-    var year = Math.floor(Math.random() * 80) + 5;
-    autor.innerHTML = text + ", " + (year) ;
+    var year = Math.floor(Math.random() * 2600) - 500;
+    var age = Math.floor(Math.random() * 80) + 20;
+    var bc = false;
+    if (year < 0)
+      
+      bc = true;
+    
+    autor.innerHTML = text + ", " + (Math.abs(year)) + "-" + (Math.abs(year + age));
+
+    if (bc)
+      autor.innerHTML += " v.C.";
     
     if(spruch_g)
       show_new();
@@ -120,12 +129,12 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
       autor_g = true;
   }
 
-  function neuerAutorBio(text){
-    var autor = document.getElementById("autor");
-  
-    autor.innerHTML += ", " + text;
-    
-  }
+  //function neuerAutorBio(text){
+  //  var autor = document.getElementById("autor");
+  //
+  //  autor.innerHTML += ", " + text;
+  //  
+  //}
   
   function show_new(){
     randomBg();
