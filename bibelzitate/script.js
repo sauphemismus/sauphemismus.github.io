@@ -61,15 +61,8 @@ document.onload = document.getElementById("history").innerHTML = "";
 
 
 function randomBg(){
-  try{
-    var ratio = window.devicePixelRatio;
-    var width = window.innerWidth * ratio;
-    var height = window.innerHeight * ratio;
-  }
-  catch(e){
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-  }
+  width = window.screen.width;
+  height = window.screen.height;
   var random = Math.floor(Math.random() * 10000);
   
   if(background)
