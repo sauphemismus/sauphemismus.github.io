@@ -112,7 +112,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   
     generate(
       "when boys wear beanies*cravin adventure 24/7*watching it rain*having the perfect shoes to go with your outfit*playing with your cat*wanting the perfect prom dress*getting a nose ring*trying not to wear the same outfit twice*having a cute hairstyle*being weird*painting your nails pastel colors for the spring time*coffee on chilly fall days*wishing you had enough money to travel the world*loving the warmth of their arms*making pinky promises*going on tumblr too much*loving to spend time with your best friend*christmas treats*soft neck kisses*growing your hair out*lazy fall days*taking your bra off after a long day*popcorn and movies*wanting to get away for a while*wanting cute, small tattoos*netflix and chill*being close to your sister*staying in bed all day*watching it rain*getting along better with guys than girls*making funny faces*",
-      31, 1.0, 220, "*", neuerSpruch);
+      31, 1.2, 220, "*", neuerSpruch);
   
     neuerAutor();
 
