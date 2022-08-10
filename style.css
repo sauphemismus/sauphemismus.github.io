@@ -11,7 +11,7 @@
   --color-4: #FAE96F;
   */
 
-  --color-1: #184E77;
+  --color-1: rgba(85, 85, 85, 0);
   --color-2: #1A759F;
   --color-3: #34A0A4;
   --color-4: #76C893;
@@ -21,7 +21,18 @@
 }
 
 body {
-  text-shadow: 0 0 20px black;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.451);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  background-color: black;
+  font-size: max(1.5vh, 1.5vw);
+  font-weight: normal;
+  overflow: overlay;
   
 }
 
@@ -30,19 +41,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  overflow-x: hidden;
-  font-family: "Montserrat", sans-serif;
-  font-size: max(1.5vh, 1.5vw);
-  font-weight: normal;
-  overflow: overlay;
   justify-content: space-between;
-  
+}
+
+@media (min-width: 1025px) {
+  #vh100 {
+    height: 95vh;
+  }
 }
 
 
-
-#background{
+.bg_div{
   position: fixed;
   width: 100%;
   height: 100%;
@@ -51,15 +60,17 @@ body {
   z-index: -1;
   object-fit: cover;
   transition: all 0.5s ease;
-  filter: brightness(0.85);
+  filter: blur(2.5px) brightness(0.75);
+  
 }
+
+
 
 h2{
   font-size: 3em;
 }
 
 .button1 {
-  
   background-color: #00000010;
   backdrop-filter: blur(10px);
   user-select: none;
@@ -68,7 +79,6 @@ h2{
   color: #fff;
   padding: 0.1em 1.3em;
   font-size: min(4vh, 4vw);
-  border-radius: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -77,6 +87,7 @@ h2{
   display: flex;
   align-items: center;
   gap: 0.5em;
+  border-radius: 15px;
 }
 
 .loader {
@@ -106,13 +117,8 @@ h2{
   gap: 0em;
   margin-bottom: 4vh; 
   margin-top: 4vh; 
-  color: var(--text-color);
-  text-align: center;
-  overflow-x: hidden;
-  font-family: "Montserrat", sans-serif;
-  font-size: max(1.5vh, 1.5vw);
-  font-weight: normal;
-  overflow: overlay;   
+  padding-right: 1.5em;
+  padding-left: 1.5em;
 }
 
 #history {
@@ -122,16 +128,7 @@ h2{
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
-  gap: 1em;
-  color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  overflow-x: hidden;
-  font-family: "Montserrat", sans-serif;
-  font-size: max(1.5vh, 1.5vw);
-  font-weight: normal;
-  overflow: overlay;
+  gap: 1.5em;
 }
 
 #history li {
@@ -199,6 +196,7 @@ h2{
   cursor: pointer;
   user-select: none;
   font-family: "Montserrat", sans-serif;
+  text-shadow: 0 0 20px black;
 }
 .button2 p {
   font-size: 1.5em;

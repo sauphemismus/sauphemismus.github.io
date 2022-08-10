@@ -1,17 +1,35 @@
 function randomBg(topic){
   width = document.documentElement.clientWidth;
   height = document.documentElement.clientHeight;
-  var random = Math.floor(Math.random() * 200);
-  div = document.getElementById("bg_div");
-  div.innerHTML = '<img id="background" src="https://source.unsplash.com/random/' + width + 'x' + height + '/?' + topic + '?sig=' + Math.random() + '">';
+  var random = Math.floor(Math.random() * 10000);
+  if(background)
+    div = document.getElementById("bg1");
+  else div = document.getElementById("bg2");
+  div.style.backgroundImage = "url('https://source.unsplash.com/random/" + width + "x" + height + "/?" + topic + "?sig=" + random + "')";
+
    
 }
 function randomTopic(){
-  array = ["Beer", "Alcohol", "Bar, Beer", "Cocktail", "Drinking, Alcohol", "Party, Beer", "Dancing, Beer", "Friends, Beer", "Beer", "Bier", "Booze", "Gin", "Rum", "Aperol", "Whiskey", "Vodka", "Tequila", "Red-Wine", "White-Wine"]
+  array = ["Beer", "Alcohol", "Cocktail", "Alcohol", "Shots,Alcohol", "Liqour", "Pub", "Beer", "Beer", "Bier", "Booze", "Gin", "Aperol", "Whiskey", "Vodka", "Tequila", "RedWine", "WhiteWine"]
   random = Math.floor(Math.random() * array.length);
   return array[random];
 }
+// ------------------------------------------------------------------------------------------------------------
+var background = false;
 randomBg("Beer");
+if(background){
+  bg = document.getElementById("bg1");
+  nbg = document.getElementById("bg2");
+}
+else{
+  bg = document.getElementById("bg2");
+  nbg = document.getElementById("bg1");
+}
+bg.style.zIndex = "-10";
+nbg.style.zIndex = "-11";
+nbg.style.backgroundImage = "";
+background = !background;
+
 
 var whatsapp_btn = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
   width="24" height="24"
@@ -34,7 +52,9 @@ async function query(data) {
 function generate() {
   document.getElementById("info-toggle").checked = true;
   document.getElementsByClassName("loader")[0].style.display = "block";
+  randomBg(randomTopic());
   var output = "";
+
   query({
     inputs:
       "sich amtlich einen umzuhängen*sich einen hinter die Brust gleiten zu lassen*sich als einen Knacker zu bezeichnen*sich die Brause schütteln zu lassen*sich beinahe einen zu pummeln*sich einen steinernen Doktor zu adeln*sich ein Züchtbier zu servieren*sich eine harmonische Halbe zu vollfüllen*sich in ein Langwasser übertaumeln zu lassen*sich einen in die Fresse schäumen zu lassen*sich den Kopf umzurühren*sich die Wäsche abziehen zu lassen*sich glimpflich die Säfte zu mischen*sich einen in die Schüssel zu rühren*sich einen aufsteigen zu lassen*sich den Kübel zu düngen *sich einen in den Hals zu schütten*sich die Konserven zu öffnen*sich die Latschen besudeln zu lassen*sich einen in die Schädelhöhle zu rühren*sich ordentlich einen reinzulöten*sich wie ein Achtarmiger einen reinzuorgeln*sich einen hinter die Rüstung zu römern*sich ein Export zu importieren*sich einen aus der Fassung zu befreien*sich den Helm zu lackieren*sich die Kontakte feucht zu legen*sich einen Henkel vom Humpen zu brechen*sich den Schädel zu fluten*sich einen hinter die Kiemen zu peitschen*",
@@ -97,7 +117,18 @@ function generate() {
       <p>Einladen</p>  
         </button>`;
     
-    randomBg(randomTopic());
+    if(background){
+      bg = document.getElementById("bg1");
+      nbg = document.getElementById("bg2");
+    }
+    else{
+      bg = document.getElementById("bg2");
+      nbg = document.getElementById("bg1");
+    }
+    bg.style.zIndex = "-10";
+    nbg.style.zIndex = "-11";
+    nbg.style.backgroundImage = "";
+    background = !background;
   });
 }
 function history_FIFO() {
@@ -168,6 +199,7 @@ function isNaughty(str) {
     "bombe",
     "gestorben",
     " tot",
+    " töten",
     "tod",
     "stirbt",
     "getötet",
@@ -182,26 +214,4 @@ function isNaughty(str) {
   }
   return false;
 }
-async function createNBubbles(n, index) {
-  var div = document.getElementById("bubbles" + index);
-  for (var i = 0; i < n; i++) {
-    var width = Math.random() * 3;
-    var x = Math.random() * 100;
-    var y = Math.random() * 50;
-    var speed = Math.random() + 3;
-    div.innerHTML += `<div class="bubble" style="width: ${width}em; left: ${x}%; bottom: -${y}%; animation-duration: ${speed}s;"></div>`;
-  }
-  
-  setTimeout(function () {
-    div.innerHTML = "";
-  }
-  , 4000);
-}
-function sparkle() {
-  var a = Math.floor(Math.random() * 5) + 5;
-  var b = Math.floor(Math.random() * 5) + 5;
-  var c = Math.floor(Math.random() * 5) + 5;
-  createNBubbles(a, 1);
-  createNBubbles(b, 2);
-  createNBubbles(c, 3);s
-}
+
