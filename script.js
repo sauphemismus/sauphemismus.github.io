@@ -6,7 +6,7 @@ function randomBg(topic){
     div = document.getElementById("bg1");
   else div = document.getElementById("bg2");
   https://source.unsplash.com/random?sig=123/&beer
-  div.style.backgroundImage = "url('https://source.unsplash.com/random?sig=" + random +"/" + width + "x" + height + "/&" + topic + "')";
+  div.style.backgroundImage = "url('https://source.unsplash.com/random/" + width + "x" + height + "/?sig=" + random + "&" + topic + "')";
 
    
 }
