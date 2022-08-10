@@ -10,7 +10,7 @@ function randomBg(topic){
    
 }
 function randomTopic(){
-  array = ["Beer", "Alcohol", "Cocktail", "Alcohol", "Shots,Alcohol", "Liqour", "Pub", "Beer", "Beer", "Bier", "Booze", "Gin", "Aperol", "Whiskey", "Vodka", "Tequila", "RedWine", "WhiteWine"]
+  array = ["Beer", "Alcohol", "Cocktail", "Alcohol", "Liqour", "Pub", "Beer", "Beer", "Bier", "Booze", "Gin", "Aperol", "Whiskey", "Vodka", "Tequila", "Wine"]
   random = Math.floor(Math.random() * array.length);
   return array[random];
 }
