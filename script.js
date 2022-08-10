@@ -1,3 +1,18 @@
+function randomBg(topic){
+  width = document.documentElement.clientWidth;
+  height = document.documentElement.clientHeight;
+  var random = Math.floor(Math.random() * 200);
+  div = document.getElementById("bg_div");
+  div.innerHTML = '<img id="background" src="https://source.unsplash.com/random/' + width + 'x' + height + '/?' + topic + '?sig=' + Math.random() + '">';
+   
+}
+function randomTopic(){
+  array = ["Beer", "Alcohol", "Bar, Beer", "Cocktail", "Drinking, Alcohol", "Party, Beer", "Dancing, Beer", "Friends, Beer", "Beer", "Bier", "Booze", "Gin", "Rum", "Aperol", "Whiskey", "Vodka", "Tequila", "Red-Wine", "White-Wine"]
+  random = Math.floor(Math.random() * array.length);
+  return array[random];
+}
+randomBg("Beer");
+
 var whatsapp_btn = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
   width="24" height="24"
   viewBox="0 0 24 24"
@@ -22,11 +37,11 @@ function generate() {
   var output = "";
   query({
     inputs:
-      "Sich ordentlich einen reinzulöten \nSich wie ein achtarmiger einen reinzuorgeln \nSich einen hinter die Rüstung römern \nSich ein Export zu importieren  \nSich einen aus seiner Fassung zu befreien \nSich einen durch den Bauch zu werfen \nSich einen hinter die Brust gleiten zu lassen \nSich einen an die Decke zu werfen \nSich einen über die Taille zu streichen \nSich als einen Knacker zu bezeichnen \nSich selbst zweimal glimpflich durchzuspielen \nSich einen bis zum Saum zu rabbanatisieren \nSich einen Silbergeldschein in den Zeigefinger zu stecken \nSich mitleidig behandeln zu lassen \nSich gegen die süße Brause schütteln zu lassen \nSich beinahe einen zu pummeln \nSich einen steinernen Doktor zu adeln \nSich ein Züchtbier zu servieren \nSich eine harmonische Anderthalbe zu vollfüllen \nSich an die eigene Schwiegermuschel zu binden \nSich einen ans dunkelgrünes Palfaun aufzustapfen \nSich durch die Donnerprobe zermatschen zu lassen \nSich im Crackerspace empfangen zu lassen \nSich in ein Langwasser übertaumeln zu lassen \nSich den Spiegelfregen in die Fresse schäumen zu lassen \nSich einen auf die Arschkante zu werfen",
+      "sich amtlich einen umzuhängen*sich einen hinter die Brust gleiten zu lassen*sich als einen Knacker zu bezeichnen*sich die Brause schütteln zu lassen*sich beinahe einen zu pummeln*sich einen steinernen Doktor zu adeln*sich ein Züchtbier zu servieren*sich eine harmonische Halbe zu vollfüllen*sich in ein Langwasser übertaumeln zu lassen*sich einen in die Fresse schäumen zu lassen*sich den Kopf umzurühren*sich die Wäsche abziehen zu lassen*sich glimpflich die Säfte zu mischen*sich einen in die Schüssel zu rühren*sich einen aufsteigen zu lassen*sich den Kübel zu düngen *sich einen in den Hals zu schütten*sich die Konserven zu öffnen*sich die Latschen besudeln zu lassen*sich einen in die Schädelhöhle zu rühren*sich ordentlich einen reinzulöten*sich wie ein Achtarmiger einen reinzuorgeln*sich einen hinter die Rüstung zu römern*sich ein Export zu importieren*sich einen aus der Fassung zu befreien*sich den Helm zu lackieren*sich die Kontakte feucht zu legen*sich einen Henkel vom Humpen zu brechen*sich den Schädel zu fluten*sich einen hinter die Kiemen zu peitschen*",
     parameters: {
       min_length: 500,
       max_length: 500,
-      temperature: Math.random() * 0.1 + 0.8,
+      temperature: (Math.random() * 0.2) + 0.8,
     },
     options: {
       wait_for_model: true,
@@ -34,18 +49,25 @@ function generate() {
     },
   }).then((response) => {
     output = JSON.stringify(response);
-    var outArray = output.split("\\n");
-    var sauphemismus = outArray[26];
-    var nice = 69;
+    output = output.replace("\\n", "*");
+    var outArray = output.split("*");
+    
+    var sauphemismus = outArray[30];
+    var nice = 120;
     if (sauphemismus.length > nice || sauphemismus.length < 3 || isNaughty(sauphemismus)) {
       generate();
       return;
     }
-    var sauphemismus =
-      sauphemismus.substring(0, 1).toLowerCase() +
-      sauphemismus.substring(1, sauphemismus.length - 1);
+    sauphemismus = sauphemismus.replace("sich sich", "sich");
+    sauphemismus = sauphemismus.replace("eine eine", "eine");
+    sauphemismus = sauphemismus.replace("eine einen", "einen");
+    sauphemismus = sauphemismus.replace("eine einem", "einem");
+    sauphemismus = sauphemismus.replace("einen eine", "eine");
     sauphemismus = sauphemismus.replace("einen einen", "einen");
     sauphemismus = sauphemismus.replace("einen einem", "einem");
+    sauphemismus = sauphemismus.replace("einem eine", "eine");
+    sauphemismus = sauphemismus.replace("einem einen", "einen");
+    sauphemismus = sauphemismus.replace("einem einem", "einem");
     sauphemismus = sauphemismus.replace("einen in einen", "in einen");
     sauphemismus = sauphemismus.replace("einen in einem", "in einem");
     sauphemismus = sauphemismus.replace("einen als einen", "als einen");
@@ -67,7 +89,7 @@ function generate() {
       document.getElementById("toggle-history").style.display = "flex";
     } catch (e) {}
     document.getElementById("query").innerHTML =
-      '<h1 id="sauphemismus">...' + sauphemismus + "?</h1>";
+      '<h1 id="sauphemismus">... ' + sauphemismus + "?</h1>";
     document.getElementById(
       "share"
     ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ${sauphemismus}?';" id="whatsapp">
@@ -75,7 +97,7 @@ function generate() {
       <p>Einladen</p>  
         </button>`;
     
-    sparkle();
+    randomBg(randomTopic());
   });
 }
 function history_FIFO() {

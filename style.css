@@ -21,6 +21,11 @@
 }
 
 body {
+  text-shadow: 0 0 20px black;
+  
+}
+
+#vh100 {
   color: var(--text-color);
   display: flex;
   flex-direction: column;
@@ -28,39 +33,42 @@ body {
   text-align: center;
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
-  background-color: var(--color-4);
   font-size: max(1.5vh, 1.5vw);
   font-weight: normal;
   overflow: overlay;
-}
-
-#vh100 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-}
-
-@media (min-width: 1025px) {
-  #vh100 {
-    height: 95vh;
-  }
+  
 }
 
 
+
+#background{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  object-fit: cover;
+  transition: all 0.5s ease;
+  filter: brightness(0.85);
+}
 
 h2{
-  font-size: 2em;
+  font-size: 3em;
 }
 
 .button1 {
-  background-color: transparent;
+  
+  background-color: #00000010;
+  backdrop-filter: blur(10px);
   user-select: none;
   width: fit-content;
   text-decoration: none;
   color: #fff;
-  padding: 0.3em 1.5em;
+  padding: 0.1em 1.3em;
   font-size: min(4vh, 4vw);
+  border-radius: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -96,6 +104,15 @@ h2{
   align-items: center;
   justify-content: center;
   gap: 0em;
+  margin-bottom: 4vh; 
+  margin-top: 4vh; 
+  color: var(--text-color);
+  text-align: center;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  font-size: max(1.5vh, 1.5vw);
+  font-weight: normal;
+  overflow: overlay;   
 }
 
 #history {
@@ -106,6 +123,15 @@ h2{
   align-items: center;
   justify-content: center;
   gap: 1em;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  font-size: max(1.5vh, 1.5vw);
+  font-weight: normal;
+  overflow: overlay;
 }
 
 #history li {
@@ -115,7 +141,7 @@ h2{
 #history a {
   text-decoration: none;
   color: #fff;
-  font-size: 1em;
+  font-size: 1.4em;
   font-family: "Montserrat", sans-serif;
   font-weight: normal;
   cursor: pointer;
@@ -172,6 +198,7 @@ h2{
   padding: 0 0.5em;
   cursor: pointer;
   user-select: none;
+  font-family: "Montserrat", sans-serif;
 }
 .button2 p {
   font-size: 1.5em;
@@ -200,25 +227,26 @@ h2{
   display: flex;
   align-items: flex-end;
   justify-content: end;
-  right: 0.2em;
-  bottom: 0.2em;
+  right: 0.5em;
+  bottom: 0.5em;
   z-index: 1000;
   color: #fff;
   font-size: 2.5em;
   user-select: none;
   cursor: pointer;
-  height: 0.8em;
-  width: 0.8em;
+  height: 1.1em;
+  width: 1.1em;
 }
 
 #info-toggle-btn svg {
-  width: 0.8em;
-  height: 0.8em;
+  width: 1.1em;
+  height: 1.1em;
+  
 }
 
 #info-card {
   backdrop-filter: blur(5px);
-  background-color: #00000020;
+  background-color: #0000005d;
   padding: 1em;
   padding-right: 3em;
   position: fixed;
@@ -227,8 +255,17 @@ h2{
   z-index: 100;
   height: fit-content;
   text-align: left;
-  max-width: 30%;
+  max-width: 50%;
   transition: all 0.5s ease-in-out;
+  border-top-left-radius: 15px;
+  font-size: 1.3em;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  overflow: overlay;
 }
 
 #info-toggle:checked ~ #info-card {
@@ -237,140 +274,14 @@ h2{
 
 
 
-/*----------------------------------------------------------------------------*/
-#bubbles1 .bubble{
-  background-color: var(--color-1);
-  z-index: -10;
-}
-#bubbles2 .bubble{
-  background-color: var(--color-2);
-  z-index: -11;
-}
-#bubbles3 .bubble{
-  background-color: var(--color-3);
-  z-index: -12;
-}
-#sparkling {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-}
 
 
-.bubble{
-  position: absolute;
-  bottom: 0;
-  border-radius: 50%;
-  aspect-ratio: 1;
-  animation: float linear;
-}
-
-/* animation float*/
-@keyframes float {
-  0% {
-    transform: translateY(0);	
-  }
-  100% {
-    transform: translateY(-300vh);
-    opacity: 0%;
-  }
-}
 
 
-.background {
-  position: static;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100%;
-}
 
 
-.background #background1{
-  z-index: -10;
-  display: grid;
-  position: fixed;
-  bottom: 0;
-  filter: drop-shadow(0 0 1em #000);
-}
-.background #bg1 {
-  bottom: 0;
-  width: 100vw;
-  height: min-content;
-  margin: 0;
-  padding: 0;
-}
-#bg1 path{
-  fill: var(--color-1);
-}
-.background #background1 div{
-  width: 100vw;
-  background-color: var(--color-1);
-}
-
-
-.background #background2{
-  z-index: -11;
-  display: grid;
-  position: fixed;
-  bottom: 0;
-  filter: drop-shadow(0 0 1em #000);
-}
-.background #bg2 {
-  bottom: 0;
-  width: 100vw;
-  height: min-content;
-  margin: 0;
-  padding: 0;
-}
-#bg2 path{
-  fill: var(--color-2);
-}
-.background #background2 div{
-  width: 100vw;
-  background-color: var(--color-2);
-}
-
-
-.background #background3{
-  z-index: -12;
-  display: grid;
-  position: fixed;
-  bottom: 0;
-  filter: drop-shadow(0 0 1em #000);
-}
-.background #bg3 {
-  bottom: 0;
-  width: 100vw;
-  height: min-content;
-  margin: 0;
-  padding: 0;
-}
-#bg3 path{
-  fill: var(--color-3);
-}
-.background #background3 div{
-  width: 100vw;
-  background-color: var(--color-3);
-}
-
-@media (max-width: 1024px) {
-  .background #background1 div{
-    height: 15vh;
-  }
-  .background #background2 div{
-    height: 30vh;
-  }
-  .background #background3 div{
-    height: 45vh;
-  }
-}
 ::selection {
-  background: var(--color-4);
+  
   color: #fff;
 }
 
@@ -384,6 +295,6 @@ h2{
 }
 
 ::-webkit-scrollbar-thumb{
-  background-color: var(--color-4);
+  background-color: var(--text-color);
   border-radius: 10px;
 }
