@@ -21,7 +21,7 @@
 }
 
 body {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.451);
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.451);
   color: var(--text-color);
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@ body {
   z-index: -1;
   object-fit: cover;
   transition: all 0.5s ease;
-  filter: contrast(1) brightness(1) saturate(1);
+  filter: contrast(0.9) brightness(0.85) saturate(1);
   
 }
 
