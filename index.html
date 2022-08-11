@@ -17,29 +17,31 @@
     
     <div id="vh100">
       <h2>Sauphemismus</h2>
-      <button onclick="generate()" class="button1">
-        <p>Bock heute Abend ...</p>
-        <div class="loader"></div>
-      </button>
-      <div id="query"></div>
-      <div id="share_history">
-        <div id="share"></div>
-        <button
-          onclick="toggle_history()"
-          id="toggle-history"
-          class="button2"
-          style="display: none"
-        >
-          <p>Verlauf</p>
-          <span class="arrow">
-            <span class="arrow-left"></span>
-            <span class="arrow-right"></span>
-          </span>
+      
+        <button onclick="generate()" class="button1">
+          <p>Bock heute Abend ...</p>
+          <div class="loader"></div>
         </button>
-      </div>
-    </div>
-    <ul id="history" style="display: none"></ul>
+        <div id="query"></div>
+        <div id="share_history">
+          <div id="share"></div>
+          <button
+            onclick="toggle_history()"
+            id="toggle-history"
+            class="button2"
+            style="display: none"
+          >
+            <p>Verlauf</p>
+            <span class="arrow">
+              <span class="arrow-left"></span>
+              <span class="arrow-right"></span>
+            </span>
+          </button>
+        </div>
+     
     
+      <ul id="history" style="display: none"></ul>
+    </div>
 
     <div id="info">
       <input type="checkbox" id="info-toggle" checked />
