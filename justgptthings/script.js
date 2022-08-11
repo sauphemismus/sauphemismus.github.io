@@ -16,8 +16,8 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
       },
     }).then((response) => {
       output = JSON.stringify(response);
-      output = output.replace(/\n/g, "<br>");
-      output = output.replace(/\\n/gm, " ");
+      output = output.replace(/\n/g, splitChar);
+      output = output.replace(/\\n/gm, splitChar);
       output = output.replace(/[\[\]\{\}\\"]/g, "");
       output = output.replace("generated_text:", "");
       
@@ -95,6 +95,9 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   
   // generate from input----------------------------------------------------------
   var running = false;
+  var background = false;
+  var spruch_gen = "";
+  var spruch_show = "";
 
   document.onload = randomBg("nice sunset");
   document.onload = init();
@@ -102,20 +105,18 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   
   
   function randomBg(topic){
-    width = document.documentElement.clientWidth;
-    height = document.documentElement.clientHeight;
-    var random = Math.floor(Math.random() * 200);
-    div = document.getElementById("bg_div");
-    div.innerHTML = '<img id="background" src="https://source.unsplash.com/random/' + width + 'x' + height + '/?' + topic + '?sig=' + random + '">';
-     
-  }
-  
-  function randomFont(){
-    array = ["UCUcharlesscript"];
-    random = Math.floor(Math.random() * array.length);
+    width = document.documentElement.clientWidth + 10;
+    height = document.documentElement.clientHeight + 10;
+    var random = Math.floor(Math.random() * 10000);
 
-    
-    return UCU;
+    if (background){
+      div = document.getElementById("bg1");
+    } 
+    else {
+      div = document.getElementById("bg2");
+    }
+    div.style.backgroundImage = "url('https://source.unsplash.com/random/" + width + "x" + height + "/?sig=" + random + "/&" + topic + "')";
+
   }
 
   function randomTopic(){
@@ -142,6 +143,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
     generate(
       "when boys wear beanies*craving adventure 24/7*watching it rain*having the perfect shoes to go with your outfit*playing with your cat*wanting the perfect prom dress*getting a nose ring*trying not to wear the same outfit twice*having a cute hairstyle*being weird*painting your nails pastel colors for the spring time*coffee on chilly fall days*wishing you had enough money to travel the world*loving the warmth of their arms*making pinky promises*going on tumblr too much*loving to spend time with your best friend*christmas treats*soft neck kisses*growing your hair out*lazy fall days*taking your bra off after a long day*popcorn and movies*wanting to get away for a while*wanting cute, small tattoos*netflix and chill*being close to your sister*staying in bed all day*watching it rain*getting along better with guys than girls*making funny faces*",
       31, 1.0, 220, "*", neuerSpruch);
+    
 
     
   }
@@ -177,12 +179,22 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   }
   
   function neuerSpruch(text){
+    
+    spruch_show = spruch_gen;
+    spruch_gen = text;
+    if (spruch_show == ""){
+      generate(
+        "when boys wear beanies*craving adventure 24/7*watching it rain*having the perfect shoes to go with your outfit*playing with your cat*wanting the perfect prom dress*getting a nose ring*trying not to wear the same outfit twice*having a cute hairstyle*being weird*painting your nails pastel colors for the spring time*coffee on chilly fall days*wishing you had enough money to travel the world*loving the warmth of their arms*making pinky promises*going on tumblr too much*loving to spend time with your best friend*christmas treats*soft neck kisses*growing your hair out*lazy fall days*taking your bra off after a long day*popcorn and movies*wanting to get away for a while*wanting cute, small tattoos*netflix and chill*being close to your sister*staying in bed all day*watching it rain*getting along better with guys than girls*making funny faces*",
+        31, 1.0, 220, "*", neuerSpruch);
+        return
+    }
+
     var spruch = document.getElementById("spruch");
     
-    if (text.endsWith(" "))
-      text = text.substring(0, text.length - 1);
-    if (!text.endsWith(".") || !text.endsWith("!") || !text.endsWith("?"))
-      spruch.innerHTML = text +".";
+    if (spruch_show.endsWith(" "))
+      spruch_show = spruch_show.substring(0, spruch_show.length - 1);
+    if (!spruch_show.endsWith(".") || !spruch_show.endsWith("!") || !spruch_show.endsWith("?"))
+      spruch.innerHTML = spruch_show +".";
     
     var autor = document.getElementById("autor");
    
@@ -202,7 +214,21 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
 
   
   function show_new(){
-    new_topic = generateMVP(document.getElementById("spruch").innerHTML, keywords2BG);
+
+    if(background){
+      bg = document.getElementById("bg1");
+      nbg = document.getElementById("bg2");
+    }
+    else{
+      bg = document.getElementById("bg2");
+      nbg = document.getElementById("bg1");
+    }
+    bg.style.zIndex = "-10";
+    nbg.style.zIndex = "-11";
+    nbg.style.backgroundImage = "";
+    background = !background;
+
+    new_topic = generateMVP(spruch_gen, keywords2BG);
     var div = document.getElementById("sprichwort");
     div.style.display = "grid";
   

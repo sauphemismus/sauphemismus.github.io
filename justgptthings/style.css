@@ -3,20 +3,24 @@
     padding: 0;
   }
   
-  #background{
+  .bg_div{
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 110%;	
+    height: 110%;
+    top: -2.5px;
+    left: -2.5px;
     z-index: -1;
     object-fit: cover;
     transition: all 0.5s ease;
+    filter: contrast(0.9) sepia(0.3) brightness(0.9) saturate(2);
+    
   }
   
   body{
+
   }
   
   #sprichwort{
-    width: 100%;
     display: grid;
     color: white;
     text-shadow: 0 0 10px black;
@@ -24,6 +28,11 @@
     width: 80vw;
     margin: 0 10vw;
     font-size: min(5vw, 5vh);
+    position: absolute;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    
     
   }
   
@@ -34,23 +43,23 @@
     -webkit-text-stroke-color: black;
     font-weight: normal;
     letter-spacing: -4.0px;
-    text-align: center;
-    margin-top: 1.5em;
-    
+    text-align: center; 
+ 
   }
   
   #autor{
     font-size: 1em;
     text-align: center;
     color: #ffffffbf;
-    margin-top: 0.3em;
+    margin-top: 0.3em; 
   }
   
   
   button{
     color: white;
     background-color: #00000033;
-    padding: 1em 1.5em;
+    padding: 0.8em 1.2em;
+    padding-top: 0.7em;
     font-size: 2.2rem;
     border: none;
     backdrop-filter: blur(10px);
@@ -59,6 +68,7 @@
     margin: 0.5em;
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
+    text-underline-position: auto;
   }
   
   button:hover{
