@@ -3,13 +3,17 @@
     padding: 0;
   }
   
-  #background{
+  .bg_div{
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 110%;	
+    height: 110%;
+    top: -2.5px;
+    left: -2.5px;
     z-index: -1;
     object-fit: cover;
     transition: all 0.5s ease;
+    filter: contrast(0.9) sepia(0.5) brightness(0.9);
+    
   }
   
   body{
@@ -19,17 +23,24 @@
     width: 100%;
     display: grid;
     color: white;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 15px black;
     text-align: end;
     width: 80vw;
     margin: 0 10vw;
     font-size: min(5vw, 5vh);
+    position: absolute;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    
   }
   
   #spruch{
     font-size: 2em;
+    
     font-weight: normal;
     text-align: center;
+    
   }
   
   #autor{
@@ -40,23 +51,26 @@
   button{
     color: white;
     background-color: #00000010;
-    padding: 1em 1.5em;
+    padding: 1em 1.2em;
     font-size: 2rem;
     border: none;
     backdrop-filter: blur(10px);
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: 0.5em;
     font-family: Josefin Slab;
     text-align: center;
   }
   
   button:hover{
-    background-color: #00000020;
+    background-color: #00000030;
   }
   
   #btn{
     width: 100%;
+    padding-bottom: 2em;
+    position: absolute;
+    bottom: 0;
     display: flex;
     justify-content: center;
   }
@@ -119,31 +133,31 @@
   .loader-line-wrap:nth-child(5) { animation-delay: -250ms; }
   
   .loader-line-wrap:nth-child(1) .loader-line {
-    border-color: hsl(0, 80%, 60%);
+    border-color: hsl(6, 80%, 60%);
     height: 90px;
     width: 90px;
     top: 7px;
   }
   .loader-line-wrap:nth-child(2) .loader-line {
-    border-color: hsl(60, 80%, 60%);
+    border-color: hsl(48, 80%, 60%);
     height: 76px;
     width: 76px;
     top: 14px;
   }
   .loader-line-wrap:nth-child(3) .loader-line {
-    border-color: hsl(120, 80%, 60%);
+    border-color: hsl(120, 64%, 53%);
     height: 62px;
     width: 62px;
     top: 21px;
   }
   .loader-line-wrap:nth-child(4) .loader-line {
-    border-color: hsl(180, 80%, 60%);
+    border-color: hsl(212, 69%, 49%);
     height: 48px;
     width: 48px;
     top: 28px;
   }
   .loader-line-wrap:nth-child(5) .loader-line {
-    border-color: hsl(240, 80%, 60%);
+    border-color: hsl(258, 64%, 51%);
     height: 34px;
     width: 34px;
     top: 35px;
