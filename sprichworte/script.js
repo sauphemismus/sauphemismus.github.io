@@ -29,7 +29,10 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
       }
       followFunction(outArray[inputCount]);
   
-    }).catch((error) => {})
+    }).catch((error) => {
+      error = JSON.stringify(error);
+      window.alert("Whoops, something went wrong:<br>" + error);
+    })
   }
   
   async function query(data) {
@@ -212,7 +215,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
       
       bc = true;
     
-    autor.innerHTML = text + ", " + (Math.abs(year)) + "-" + (Math.abs(year + age));
+    autor.innerHTML = text + "<br>(" + (Math.abs(year)) + "-" + (Math.abs(year + age)) + ")";
 
     if (bc)
       autor.innerHTML += " v.C.";
