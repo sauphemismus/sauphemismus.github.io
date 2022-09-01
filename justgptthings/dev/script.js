@@ -32,8 +32,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
       
   
     }).catch((error) => {
-      error = JSON.stringify(error);
-      window.alert("Whoops, something went wrong:<br>" + error);
+      window.alert("Whoopsy, something went wrong\nTry again later...\n" + error);
     })
   }
   
@@ -104,7 +103,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   // generate from input----------------------------------------------------------
   var running = false;
   var background = false;
-  var firstCall = true;
+
   var spruch_gen = "";
   var spruch_show = "";
   // autor
@@ -120,19 +119,6 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   document.onload = randomBg("nice sunset");
   document.onload = init();
 
-  function firstCall(){
-    //generate Spruch before showing on first call
-    generate(
-      "when boys wear beanies*craving adventure 24/7*watching it rain*having the perfect shoes to go with your outfit*playing with your cat*wanting the perfect prom dress*getting a nose ring*trying not to wear the same outfit twice*having a cute hairstyle*being weird*painting your nails pastel colors for the spring time*coffee on chilly fall days*wishing you had enough money to travel the world*loving the warmth of their arms*making pinky promises*going on tumblr too much*loving to spend time with your best friend*christmas treats*soft neck kisses*growing your hair out*lazy fall days*taking your bra off after a long day*popcorn and movies*wanting to get away for a while*wanting cute, small tattoos*netflix and chill*being close to your sister*staying in bed all day*watching it rain*getting along better with guys than girls*making funny faces*",
-      31, 1.0, 220, "*", NEW_neuerSpruch);
-    window.alert("1 " + spruch_show);
-    generate(
-      "when boys wear beanies*craving adventure 24/7*watching it rain*having the perfect shoes to go with your outfit*playing with your cat*wanting the perfect prom dress*getting a nose ring*trying not to wear the same outfit twice*having a cute hairstyle*being weird*painting your nails pastel colors for the spring time*coffee on chilly fall days*wishing you had enough money to travel the world*loving the warmth of their arms*making pinky promises*going on tumblr too much*loving to spend time with your best friend*christmas treats*soft neck kisses*growing your hair out*lazy fall days*taking your bra off after a long day*popcorn and movies*wanting to get away for a while*wanting cute, small tattoos*netflix and chill*being close to your sister*staying in bed all day*watching it rain*getting along better with guys than girls*making funny faces*",
-      31, 1.0, 220, "*", NEW_neuerSpruch);
-    window.alert("2 " + spruch_show);
-    NEW_show_new();
-    
-  }
 
   function randomBg(topic){
     width = document.documentElement.clientWidth + 10;
@@ -214,8 +200,16 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
     var spruch = document.getElementById("spruch");
     if (spruch_show.endsWith(" "))
       spruch_show = spruch_show.substring(0, spruch_show.length - 1);
-    if (!spruch_show.endsWith(".") || !spruch_show.endsWith("!") || !spruch_show.endsWith("?"))
-      spruch.innerHTML = spruch_show +".";
+
+
+    endings = [".", "!", "?", "..", "!!", "??", "...", "!!!", "???"];
+    if (endings.some(s => spruch_show.endsWith(s))){
+      spruch.innerHTML = spruch_show;
+    }
+    else{
+      spruch.innerHTML = spruch_show + ".";
+    }
+      
     
     show_new();
     
@@ -245,50 +239,11 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
     running = false;
   
   }
-  function NEW_init(){
-    
 
-    // showing old spruch first, then start generating new spruch
-    NEW_show_new();
-    generate(
-      "when boys wear beanies*craving adventure 24/7*watching it rain*having the perfect shoes to go with your outfit*playing with your cat*wanting the perfect prom dress*getting a nose ring*trying not to wear the same outfit twice*having a cute hairstyle*being weird*painting your nails pastel colors for the spring time*coffee on chilly fall days*wishing you had enough money to travel the world*loving the warmth of their arms*making pinky promises*going on tumblr too much*loving to spend time with your best friend*christmas treats*soft neck kisses*growing your hair out*lazy fall days*taking your bra off after a long day*popcorn and movies*wanting to get away for a while*wanting cute, small tattoos*netflix and chill*being close to your sister*staying in bed all day*watching it rain*getting along better with guys than girls*making funny faces*",
-      31, 1.0, 220, "*", NEW_neuerSpruch);
-
-    
-  }
-  function NEW_show_new(){
+  function edit(){
     var spruch = document.getElementById("spruch");
-    if (spruch_show.endsWith(" "))
-      spruch_show = spruch_show.substring(0, spruch_show.length - 1);
-    if (!spruch_show.endsWith(".") || !spruch_show.endsWith("!") || !spruch_show.endsWith("?"))
-      spruch.innerHTML = spruch_show +".";
-
-    var div = document.getElementById("sprichwort");
-    div.style.display = "grid";
-
-    //switch background
-    if(background){
-      bg = document.getElementById("bg1");
-      nbg = document.getElementById("bg2");
-    }
-    else{
-      bg = document.getElementById("bg2");
-      nbg = document.getElementById("bg1");
-    }
-    bg.style.zIndex = "-10";
-    nbg.style.zIndex = "-11";
-    nbg.style.backgroundImage = "";
-    background = !background;
-    
-    var loader = document.getElementsByClassName("loader")[0];
-    loader.style.display = "none";
+    let edited_spruch = prompt("Edit the thing:", spruch.innerHTML);
+    spruch.innerHTML = edited_spruch;
   }
-  function NEW_neuerSpruch(text){
-    //store new and old Spruch
-    spruch_show = spruch_gen;
-    spruch_gen = text;
-    generateMVP(spruch_gen, keywords2BG);
-    
- 
+
   
-  }

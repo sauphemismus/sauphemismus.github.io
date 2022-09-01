@@ -88,16 +88,19 @@
   }
 
   #num{
-    top: 1em;
-    left: 1em;
-    width: 10vw;
-    border-radius: 10px;
+    color: white;
+    background-color: #00000033;
+    padding: 1em 0.01em 1em 0.3em;
+    font-size: 2rem;
     border: none;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    padding: 1em;
-    font-size: large;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 0.5em;
+    font-family: 'Times New Roman', Times, serif;
+    font-family: Josefin Slab;
+    text-align: center;
+    text-underline-position: auto;
   }
   
   
