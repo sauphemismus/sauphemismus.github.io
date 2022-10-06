@@ -13,13 +13,15 @@
 
 
 <body>
-  <div id="wrapper">
+  
     <div class="grafiken" id="temp">
-      <iframe id="temp_raw" width="225" height="260" style="border: 0px solid #ffffff; color:red"
+      <iframe id="temp_raw" width="225" height="260" style="border: 0px solid #ffffff; "
         src="https://thingspeak.com/channels/1885010/widgets/528392"></iframe>
       <iframe width="450" height="260" style="border: 0px solid #ffffff;"
         src="https://thingspeak.com/channels/1885010/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=240&title=Temperatur&type=spline&average=10&yaxis=%C2%B0C"></iframe>
     </div>
+  
+  
     <div class="grafiken" id="hum">
       <div class="cropper">
         <iframe class="gauge" width="450" height="260" style="border: 0px solid #ffffff; "
@@ -28,6 +30,8 @@
       <iframe width="450" height="260" style="border: 0px solid #ffffff; "
         src="https://thingspeak.com/channels/1885010/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=240&title=Rel.+Luftfeuchtigkeit&type=spline&average=10&yaxis=%25"></iframe>
     </div>
+  
+  
     <div class="grafiken" id="pres">
       <div class="cropper">
         <iframe class="gauge" width="450" height="260" style="border: 0px solid #ffffff; "
@@ -36,8 +40,9 @@
       <iframe width="450" height="260" style="border: 0px solid #ffffff; "
         src="https://thingspeak.com/channels/1885010/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=240&title=Druck&type=spline&average=10&yaxis=hPa"></iframe>
     </div>
+  
 
-    <script src="script.js"></script> 
+  <script src="script.js"></script>
 </body>
 
 </html>
