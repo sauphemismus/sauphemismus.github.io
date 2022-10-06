@@ -1,7 +1,5 @@
-/* make the whole background color dark grey*/
-
 body {
-    background-color: white;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
