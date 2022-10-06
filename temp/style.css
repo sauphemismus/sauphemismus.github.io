@@ -1,11 +1,25 @@
+/* make the whole background color dark grey*/
 
+body {
+    background-color: white;
+    
+}
 
 
 
 .grafiken{
     display: inline-block;
-    ;
-    margin: 0.2em;
-    translate: 100px;
+    
+}
 
+.cropper{
+    width:225px;
+    height:260px;
+    overflow:hidden;
+    display: inline-block;
+}
+
+.gauge{
+    position:relative;
+    left:-50%;
 }
