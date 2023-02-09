@@ -18,6 +18,7 @@
 
 
   --text-color: #ffffff;
+  --bg_darkness: rgba(5, 5, 5, 0.1);
 }
 
 body {
@@ -75,12 +76,20 @@ h2{
   
 }
 
+h1 {
+  background: var(--bg_darkness);
+  padding: 0.8em 1em;
+  border-radius: 100px;
+  backdrop-filter: blur(10px);
+  
+}
+
 .button1 {
-  background-color: #00000010;
+  background-color: var(--bg_darkness);
   backdrop-filter: blur(10px);
   user-select: none;
   width: fit-content;
-  text-decoration: none;
+  text-shadow: 0 0 1em #000;
   color: #fff;
   padding: 0.1em 1.3em;
   font-size: min(4vh, 4vw);
@@ -92,7 +101,7 @@ h2{
   display: flex;
   align-items: center;
   gap: 0.5em;
-  border-radius: 0.8em;
+  border-radius: 100px;
   margin-top: 2em;
 }
 
