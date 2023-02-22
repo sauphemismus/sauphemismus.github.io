@@ -18,11 +18,11 @@
 
 
   --text-color: #ffffff;
-  --bg_darkness: rgba(5, 5, 5, 0.1);
+  --bg_darkness: rgba(255, 255, 255, 0.2);
 }
 
 body {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.451);
+  text-shadow: 0 0 1.1em black;
   color: var(--text-color);
   display: flex;
   flex-direction: column;
@@ -45,6 +45,56 @@ body {
   justify-content: space-between;
   
 }
+
+#popup{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 100%;
+  border : 10px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+#message{
+  width: 50vw;
+  height: 50vh;
+  overflow: auto;
+  
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  
+  font-family: "Montserrat", sans-serif;
+}
+
+#reload{
+  padding: 20px;
+  margin: 20px;
+  border : 2px solid rgb(0, 0, 0 0.5);
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 0.2em solid #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
 
 /* @media (min-width: 1025px) {
   #vh100 {
@@ -71,6 +121,7 @@ body {
 
 
 
+
 h2{
   font-size: 3em;
   
@@ -79,7 +130,7 @@ h2{
 h1 {
   background: var(--bg_darkness);
   padding: 0.8em 1em;
-  border-radius: 100px;
+  border-radius: 1.5em;
   backdrop-filter: blur(10px);
   
 }
@@ -89,10 +140,10 @@ h1 {
   backdrop-filter: blur(10px);
   user-select: none;
   width: fit-content;
-  text-shadow: 0 0 1em #000;
+  text-shadow: 0 0 1.1em black;
   color: #fff;
   padding: 0.1em 1.3em;
-  font-size: min(4vh, 4vw);
+  font-size: min(4vh, 6vw);
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -101,7 +152,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 0.5em;
-  border-radius: 100px;
+  border-radius: 3.0em;
   margin-top: 2em;
 }
 
@@ -147,7 +198,9 @@ h1 {
   background-color: var(--bg_darkness);
   backdrop-filter: blur(10px);
   padding: 1em;
-  border-radius: 50
+  border-radius: 1.8em;
+  
+  
 }
 
 #history li {
@@ -159,6 +212,7 @@ h1 {
   color: #fff;
   font-size: 1.4em;
   font-family: "Montserrat", sans-serif;
+  text-shadow: 0 0 0.8em black;
   font-weight: normal;
   cursor: pointer;
 }
@@ -195,27 +249,32 @@ h1 {
 .arrow-left {
   left: 0;
   transform: rotate(45deg);
+  margin-top: 0.1em;
 }
 .arrow-right {
   right: 0;
   transform: rotate(-45deg);
+  margin-top: 0.1em;
 }
 
 .button2 {
   display: flex;
   align-items: center;
-  border-radius: 0%;
   border: none;
-  border-bottom: 0.2em solid #fff;
+  border: 0.2em solid #fff;
   background-color: transparent;
-  padding: 0;
   padding-bottom: -0.3em;
-  font-size: max(1.5vh, 1vw);
-  padding: 0 0.5em;
+  font-size: min(2vh, 3vw);
+  padding: 0 1em;
   cursor: pointer;
   user-select: none;
   font-family: "Montserrat", sans-serif;
-  text-shadow: 0 0 20px black;
+  text-shadow: 0 0 0.8em black;
+  background-color: var(--bg_darkness);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+  border-radius: 3.0em;
+  margin-top: 0em;
 }
 .button2 p {
   font-size: 1.5em;
@@ -229,6 +288,8 @@ h1 {
   width: 1.8em;
   height: 1.8em;
   margin-right: 0.5em;
+ 
+  
 }
 
 #info {

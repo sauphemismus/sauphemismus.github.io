@@ -58,10 +58,10 @@ function generate() {
 
   query({
     inputs:
-      "get drunk*get really wasted*get absolutely smashed*pour ourselves another one*get fucked up*get completely knocked off our feet*get hammered*get completely wrecked*gulp down an entire bottle of spirits*become dopes*slump down some beverages*have a bit too much to drink*weep in drunken glee*become incredibly obnoxious to our loved ones*be tipsy*pierce the roof*get sloshed*get completely shitfaced*dye your face*take some painkillers and lie dormant in a dark room*get completely blotto*get the runs ... and the shakes*puke, puke, puke all over everything*overindulge in something to the detriment of our minds and/or bodies*sink to the bottom of the bottle*drink ourselves into oblivion*get to know the owner of your local bar*end up in the gorse*gulp all of it down*turn into an emotional sot*get a bit loopy*forfeit every shred of dignity*crumble like an old, decaying sand castle*lick the label of another drink*get lost down our old paths*become as plastered as a pub floor*be the jessie-wagger*become one with the sofa cushions*throw something heavy at some passing kids/bouncers/people we don't know*soak in lager and ale*take up a hobby that's related to booze*smile or make sarcastic comments on that person's choice/pursuit of lifestyle and that person's life-style decisions*become the barmaker's nemesis*sit in the corner, glazed*get carried down the beer river*wince or laugh or squirm and smile at some of said drinking-related activities undertaken by others*have a bit too much... for too long... and no toilet at all*wear shoes without socks and be an absolute tit about it*befoul the public areas of bars/pubs/restaurants",
+      "get drunk*take some painkillers and lie dormant in a dark room*get really wasted*get to know the owner of your local bar*get absolutely smashed*lick the label of another drink*pour ourselves another one*get fucked up*become as plastered as a pub floor*get completely knocked off our feet*get hammered*become one with the sofa cushions*get completely wrecked*gulp down an entire bottle of spirits*become a couple of dopes*slump down some beverages*get carried down the beer river*have a bit too much to drink*weep in drunken glee*become incredibly obnoxious to our loved ones*be tipsy*turn into an emotional sot*pierce the roof*get sloshed*throw something heavy at some passing people we don't know*get completely shitfaced*dye your face*forfeit every shred of dignity*get completely blotto*get the runs and the shakes*puke, puke, puke all over everything*overindulge in something to the detriment of our minds and/or bodies*sink to the bottom of the bottle*drink ourselves into oblivion*end up in the gorse*squirm and smile at some of said drinking-related activities undertaken by others*gulp all of it down*get a bit loopy*crumble like an old, decaying sand castle*get lost down our old paths*be the jessie-wagger of the night*soak in lager and ale*take up a hobby that's related to booze*smile or make sarcastic comments on that person's choice of lifestyle decisions*become the barmaker's nemesis*sit in the corner, glazed*have a bit too much ... for too long ... and no toilet at all*wear shoes without socks and be an absolute tit about it*befoul the public areas of pubs*",
     parameters: {
-      min_length: 470,
-      max_length: 470,
+      min_length: 450,
+      max_length: 450,
       temperature: (Math.random() * 0.2) + 1.2, // 1.2 war gut
     },
     options: {
@@ -70,15 +70,63 @@ function generate() {
     },
   }).then((response) => {
     output = JSON.stringify(response);
-    output = output.replace("\\n", "*");
-    // replace all \n with * to split the output into an array
+    if (output.startsWith('{"error":')) {
+      
+      // create a popup with the error message, and a button to reload the page
+      var popup = document.createElement("div");
+      popup.setAttribute("id", "popup");
+      var message = document.createElement("div");
+      message.setAttribute("id", "message");
+      message.innerHTML = "Apologies mate, looks like the server is currently having a hard time keeping up, but don't we all sometimes?<br /><br />Maybe try again later, or just try refreshing the page.<br />";
+      var button = document.createElement("button");
+      button.setAttribute("id", "reload");
+      button.innerHTML = "Reload";
+      popup.appendChild(message);
+      popup.appendChild(button);
+      
 
-    output = output.replace("\\'", "\"");
-    output = output.replace("\"", "\'");
-    var outArray = output.split("*");
+      document.body.appendChild(popup);
+      // add an event listener to the button to reload the page
+      document.getElementById("reload").addEventListener("click", function () {
+        window.location.reload();
+      });
+      // black out the background
+      
+      // hide the loader
+      document.getElementsByClassName("loader")[0].style.display = "none";
+
+
+
+
+      return;
+    }
+
+
+
     
+    // replace all \n with * to split the output into an array
+    output = output.replace(/\\n/g, "*");
+    var outArray = output.split("*");
+    //window.alert(outArray[49]);
     var sauphemismus = outArray[49];
-    var nice = 120;
+    // remove blank spaces at the beginning and end of the output
+    sauphemismus = sauphemismus.replace(/^\s+/, "");
+    sauphemismus = sauphemismus.replace(/\s+$/, "");
+    // replace all \" with " to make the output readable
+    sauphemismus = sauphemismus.replace(/\\"/g, '"');
+    // if there are "..." in the output without a space before or after, add a space
+    sauphemismus = sauphemismus.replace(/\.\.\./g, " ... ");
+    // if there are "-" in the output with a space before,add the space after
+    sauphemismus = sauphemismus.replace(/ -/g, " - ");
+    // if there are "-" in the output with a space after,add the space before
+    sauphemismus = sauphemismus.replace(/- /g, " - ");
+    // if the output ends with a single . remove it
+    sauphemismus = sauphemismus.replace(/\.$/, "");
+    // remove blank spaces at the end of the output
+    sauphemismus = sauphemismus.replace(/\s+$/, "");
+   
+    
+    var nice = 240;
     if (sauphemismus.length > nice || sauphemismus.length < 3 || isNaughty(sauphemismus)) {
       generate();
       return;
@@ -105,9 +153,9 @@ function generate() {
       var last_sauphi = document.getElementById("sauphemismus").innerHTML;
       last_sauphi = last_sauphi.replace("...", "");
       history.innerHTML +=
-        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/en/%0a%0aYo, wanna ' +
+        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/en%0a%0aYo, wanna' +
         last_sauphi +
-        '">Yo, wanna ' +
+        '">Yo, wanna' +
         last_sauphi +
         "</a></li>";
       history_FIFO();
@@ -117,7 +165,7 @@ function generate() {
       '<h1 id="sauphemismus">... ' + sauphemismus + "?</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aYo, wanna ${sauphemismus}?';" id="whatsapp">
+    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/en%0a%0aYo, wanna ${sauphemismus}?';" id="whatsapp">
       ${whatsapp_btn}
       <p>Invite</p>  
         </button>`;
