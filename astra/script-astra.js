@@ -5,7 +5,7 @@ var whatsapp_btn = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 
 async function query(data) {
   const response = await fetch(
-    "https://api-inference.huggingface.co/models/EleutherAI/gpt-j-6B",
+    "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
     {
       headers: {
         Authorization: "Bearer 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",

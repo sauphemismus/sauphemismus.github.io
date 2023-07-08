@@ -39,6 +39,7 @@ var whatsapp_btn = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 async function query(data) {
   const response = await fetch(
     "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
+    //"https://api-inference.huggingface.co/models/gpt2-xl",
     {
       headers: {
         Authorization: "Bearer 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",
@@ -60,18 +61,22 @@ function generate() {
     inputs:
       "sich amtlich einen umzuhängen*sich einen hinter die Brust gleiten zu lassen*sich als einen Knacker zu bezeichnen*sich die Brause schütteln zu lassen*sich beinahe einen zu pummeln*sich einen steinernen Doktor zu adeln*sich ein Züchtbier zu servieren*sich eine harmonische Halbe zu vollfüllen*sich in ein Langwasser übertaumeln zu lassen*sich einen in die Fresse schäumen zu lassen*sich den Kopf umzurühren*sich die Wäsche abziehen zu lassen*sich glimpflich die Säfte zu mischen*sich einen in die Schüssel zu rühren*sich einen aufsteigen zu lassen*sich den Kübel zu düngen *sich einen in den Hals zu schütten*sich die Konserven zu öffnen*sich die Latschen besudeln zu lassen*sich einen in die Schädelhöhle zu rühren*sich ordentlich einen reinzulöten*sich wie ein Achtarmiger einen reinzuorgeln*sich einen hinter die Rüstung zu römern*sich ein Export zu importieren*sich einen aus der Fassung zu befreien*sich den Helm zu lackieren*sich die Kontakte feucht zu legen*sich einen Henkel vom Humpen zu brechen*sich den Schädel zu fluten*sich einen hinter die Kiemen zu peitschen*",
     parameters: {
-      min_length: 500,
-      max_length: 500,
+      //min_length: 500,
+      //max_length: 500,
       temperature: (Math.random() * 0.2) + 0.8,
+      do_sample: true, // more random, not real language????
+      top_p: 0.8,
+      //top_k: 10,
+      max_new_tokens: 70,
     },
     options: {
-      wait_for_model: true,
       use_cache: false,
+      wait_for_model: false,
     },
   }).then((response) => {
-    
+    console.log(JSON.stringify(response));
     output = JSON.stringify(response);
-
+    
     output = output.replace("\\n", "*");
     
     var outArray = output.split("*");
