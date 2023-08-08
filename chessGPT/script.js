@@ -17,7 +17,7 @@ function randomTopic(){
 }
 // ------------------------------------------------------------------------------------------------------------
 var background = false;
-randomBg("Beer");
+randomBg("chess");
 if(background){
   bg = document.getElementById("bg1");
   nbg = document.getElementById("bg2");
