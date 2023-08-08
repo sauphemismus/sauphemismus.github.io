@@ -77,13 +77,12 @@ function generate() {
   }).then((response) => {
     console.log(JSON.stringify(response));
     output = JSON.stringify(response);
-    alert(output)
     
     output = output.replace("\\n", "*");
     
     var outArray = output.split("*");
     
-    var sauphemismus = outArray[27];
+    var sauphemismus = outArray[26];
     var nice = 120;
     if (sauphemismus.length > nice || sauphemismus.length < 3 || isNaughty(sauphemismus)) {
       generate();
