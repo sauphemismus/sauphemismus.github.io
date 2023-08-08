@@ -65,7 +65,7 @@ function generate() {
       //min_length: 500,
       //max_length: 500,
       temperature: (Math.random() * 0.2) + 1.2,
-      do_sample: true, // more random, not real language????
+      //do_sample: true, // more random, not real language????
       top_p: 0.8,
       //top_k: 10,
       max_new_tokens: 70,
@@ -119,7 +119,7 @@ function generate() {
       document.getElementById("toggle-history").style.display = "flex";
     } catch (e) {}
     document.getElementById("query").innerHTML =
-      '<h1 id="sauphemismus">... The ' + sauphemismus + "!</h1>";
+      '<h1 id="sauphemismus">... the ' + sauphemismus + "!</h1>";
     document.getElementById(
       "share"
     ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ${sauphemismus}?';" id="whatsapp">
