@@ -77,6 +77,7 @@ function generate() {
   }).then((response) => {
     console.log(JSON.stringify(response));
     output = JSON.stringify(response);
+    alert(output)
     
     output = output.replace("\\n", "*");
     
