@@ -82,7 +82,7 @@ function generate() {
     
     var outArray = output.split("*");
     
-    var sauphemismus = outArray[26];
+    var sauphemismus = outArray[27];
     var nice = 120;
     if (sauphemismus.length > nice || sauphemismus.length < 3 || isNaughty(sauphemismus)) {
       generate();
