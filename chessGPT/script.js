@@ -11,7 +11,7 @@ function randomBg(topic){
    
 }
 function randomTopic(){
-  array = ["Chess", "King", "Queen", "Chess", "Knight", "Chess"]
+  array = ["Chess",]
   random = Math.floor(Math.random() * array.length);
   return array[random];
 }
@@ -59,7 +59,7 @@ function generate() {
 
   query({
     inputs:
-      "Toilet Variation*Hillbilly Attack*Creepy Crawly Formation*Hippopotamus Defense*Orangutan*Flick-Knife Attack*Drunken Knights Opening*Banzai-Leong Gambit*Clarendon Court Defense*Frankenstein-Dracula Variation*Coca-cola Gambit*Damiano Defense*Potato*Monkey's Bum*Vulture Benoni Defense*Double-Duck Formation*Forgotten Variation*Pork Chop Opening*Nescafe Frappe Attack*Black Knights Tango*Bulgarian Somersault*Paleface Attack*Sturm Gambit*Sodium Attack*Tortoise Opening*Waterloo-Parry Gambit*",
+      "Toilet Variation*Hillbilly Attack*Creepy-Crawly Formation*Hippopotamus Defense*Orangutan*Flick-Knife Attack*Drunken Knights Opening*Banzai-Leong Gambit*Clarendon Court Defense*Frankenstein-Dracula Variation*Coca-Cola Gambit*Frenchman's Bodyguard*Damiano Defense*Nigerian Headlock*Potato*Cock-Eye Gambit*Monkey's Bum*Vulture-Benoni Defense*Double-Duck Formation*Forgotten Variation*Pork Chop Opening*Uzbek's Mannequin*Nescafé Frappé Attack*Black Knights Tango*Bulgarian Somersault*Paleface Attack*Sturm Gambit*Reversed Butler's Gamble*Sodium Attack*Inverted Tortoise Opening*Waterloo-Parry Gambit*",
       //"sich amtlich einen umzuhängen*sich einen hinter die Brust gleiten zu lassen*sich als einen Knacker zu bezeichnen*sich die Brause schütteln zu lassen*sich beinahe einen zu pummeln*sich einen steinernen Doktor zu adeln*sich ein Züchtbier zu servieren*sich eine harmonische Halbe zu vollfüllen*sich in ein Langwasser übertaumeln zu lassen*sich einen in die Fresse schäumen zu lassen*sich den Kopf umzurühren*sich die Wäsche abziehen zu lassen*sich glimpflich die Säfte zu mischen*sich einen in die Schüssel zu rühren*sich einen aufsteigen zu lassen*sich den Kübel zu düngen *sich einen in den Hals zu schütten*sich die Konserven zu öffnen*sich die Latschen besudeln zu lassen*sich einen in die Schädelhöhle zu rühren*sich ordentlich einen reinzulöten*sich wie ein Achtarmiger einen reinzuorgeln*sich einen hinter die Rüstung zu römern*sich ein Export zu importieren*sich einen aus der Fassung zu befreien*sich den Helm zu lackieren*sich die Kontakte feucht zu legen*sich einen Henkel vom Humpen zu brechen*sich den Schädel zu fluten*sich einen hinter die Kiemen zu peitschen*",
     parameters: {
       //min_length: 500,
@@ -82,7 +82,7 @@ function generate() {
     
     var outArray = output.split("*");
     
-    var sauphemismus = outArray[26];
+    var sauphemismus = outArray[31];
     var nice = 120;
     if (sauphemismus.length > nice || sauphemismus.length < 3 || isNaughty(sauphemismus)) {
       generate();
@@ -90,8 +90,8 @@ function generate() {
     }
 
     var pieces_array = ["King", "Queen", "Knight", "Bishop", "Rook", "Pawn"]
-    var piece = Math.floor(Math.random() * pieces_array.length);
-    var moves = Math.floor(Math.random() * 30);
+    var piece = pieces_array[Math.floor(Math.random() * pieces_array.length)];
+    var moves = Math.floor(Math.random() * 30)+2;
 
     sauphemismus = sauphemismus.replace("sich sich", "sich");
     sauphemismus = sauphemismus.replace("eine eine", "eine");
@@ -127,7 +127,7 @@ function generate() {
       '<h1 id="sauphemismus">... the ' + sauphemismus + ", I'll have your " + piece + " in " + moves + " moves!</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aAh, you played ${sauphemismus}!';" id="whatsapp">
+    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aOh no, you played the ${sauphemismus}!';" id="whatsapp">
       ${whatsapp_btn}
       <p>Einladen</p>  
         </button>`;
