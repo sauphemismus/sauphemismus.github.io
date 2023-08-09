@@ -115,7 +115,7 @@ function generate() {
       var last_sauphi = document.getElementById("sauphemismus").innerHTML;
       last_sauphi = last_sauphi.replace("...", "");
       history.innerHTML +=
-        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/%0a%0aAh, you played ' +
+        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/chessGPT%0a%0aAh, you played ' +
         last_sauphi +
         '">Ah, you played ' +
         last_sauphi +
@@ -127,7 +127,7 @@ function generate() {
       '<h1 id="sauphemismus">... the ' + sauphemismus + ", I'll have your " + piece + " in " + moves + " moves!</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aOh no, you played the ${sauphemismus}!';" id="whatsapp">
+    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/chessGPT%0a%0aOh no, you played the ${sauphemismus}!';" id="whatsapp">
       ${whatsapp_btn}
       <p>Einladen</p>  
         </button>`;
