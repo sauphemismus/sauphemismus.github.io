@@ -127,7 +127,7 @@ function generate() {
       '<h1 id="sauphemismus">... the ' + sauphemismus + ", I'll have your " + piece + " in " + moves + " moves!</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/chessGPT%0a%0aAh, you played the ${sauphemismus}, I'll have your ${piece} in ${moves} moves!';" id="whatsapp">
+      ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/chessGPT%0a%0aOh no, you played the ${sauphemismus}!';" id="whatsapp">
       ${whatsapp_btn}
       <p>Boast!</p>  
         </button>`;
