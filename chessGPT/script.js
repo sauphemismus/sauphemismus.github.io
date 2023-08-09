@@ -59,7 +59,7 @@ function generate() {
 
   query({
     inputs:
-      "Toilet Variation*Hillbilly Attack*Creepy-Crawly Formation*Hippopotamus Defense*Orangutan*Flick-Knife Attack*Drunken Knights Opening*Banzai-Leong Gambit*Clarendon Court Defense*Frankenstein-Dracula Variation*Coca-Cola Gambit*Frenchman's Bodyguard*Damiano Defense*Nigerian Headlock*Potato*Cock-Eye Gambit*Monkey's Bum*Vulture-Benoni Defense*Double-Duck Formation*Forgotten Variation*Pork Chop Opening*Uzbek's Mannequin*Nescafé Frappé Attack*Black Knights Tango*Bulgarian Somersault*Paleface Attack*Sturm Gambit*Reversed Butler's Gamble*Sodium Attack*Inverted Tortoise Opening*Waterloo-Parry Gambit*",
+      "Toilet Variation*Hillbilly Attack*Creepy-Crawly Formation*Hippopotamus Defense*Orangutan*Flick-Knife Attack*Drunken Knights Opening*Banzai-Leong Gambit*Clarendon Court Defense*Frankenstein-Dracula Variation*Gibbon Guard Defense*Coca-Cola Gambit*Frenchman's Bodyguard*Bungee-Crawl*Damiano Defense*Nigerian Headlock*Stiffed Gambler's Gambit*Potato*Ceremonious Staircase*Cock-Eye Gambit*Pretzel Attack*Sarcastic Punt Gambit*Monkey's Bum*Dirty Chunder Attack*Nanzan Tango*Vulture-Benoni Defense*Double Duck Opening*Gunslinger's Gambit*Double-Duck Formation*Giant Tumbleback Gambit*Forgotten Variation*Cherry-Pickled Gambit*Pork Chop Opening*Uzbek's Mannequin*Nescafé Frappé Attack*Wizard-Ouverture*Black Knights Tango*Bulgarian Somersault*Paleface Attack*Duckfoots-Knees-Tail Attack*Sturm Gambit*Reversed Butler's Gamble*Sodium Attack*Inverted Tortoise Opening*Black-Nacatlos Tilt*Waterloo-Parry Gambit*",
       //"sich amtlich einen umzuhängen*sich einen hinter die Brust gleiten zu lassen*sich als einen Knacker zu bezeichnen*sich die Brause schütteln zu lassen*sich beinahe einen zu pummeln*sich einen steinernen Doktor zu adeln*sich ein Züchtbier zu servieren*sich eine harmonische Halbe zu vollfüllen*sich in ein Langwasser übertaumeln zu lassen*sich einen in die Fresse schäumen zu lassen*sich den Kopf umzurühren*sich die Wäsche abziehen zu lassen*sich glimpflich die Säfte zu mischen*sich einen in die Schüssel zu rühren*sich einen aufsteigen zu lassen*sich den Kübel zu düngen *sich einen in den Hals zu schütten*sich die Konserven zu öffnen*sich die Latschen besudeln zu lassen*sich einen in die Schädelhöhle zu rühren*sich ordentlich einen reinzulöten*sich wie ein Achtarmiger einen reinzuorgeln*sich einen hinter die Rüstung zu römern*sich ein Export zu importieren*sich einen aus der Fassung zu befreien*sich den Helm zu lackieren*sich die Kontakte feucht zu legen*sich einen Henkel vom Humpen zu brechen*sich den Schädel zu fluten*sich einen hinter die Kiemen zu peitschen*",
     parameters: {
       //min_length: 500,
@@ -82,7 +82,7 @@ function generate() {
     
     var outArray = output.split("*");
     
-    var sauphemismus = outArray[31];
+    var sauphemismus = outArray[46];
     var nice = 120;
     if (sauphemismus.length > nice || sauphemismus.length < 3 || isNaughty(sauphemismus)) {
       generate();
