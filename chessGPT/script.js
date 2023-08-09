@@ -11,7 +11,7 @@ function randomBg(topic){
    
 }
 function randomTopic(){
-  array = ["Chess"]
+  array = ["Chess", "King", "Queen", "Chess", "Knight", "Chess"]
   random = Math.floor(Math.random() * array.length);
   return array[random];
 }
@@ -88,6 +88,11 @@ function generate() {
       generate();
       return;
     }
+
+    var pieces_array = ["King", "Queen", "Knight", "Bishop", "Rook", "Pawn"]
+    var piece = Math.floor(Math.random() * pieces_array.length);
+    var moves = Math.floor(Math.random() * 30);
+
     sauphemismus = sauphemismus.replace("sich sich", "sich");
     sauphemismus = sauphemismus.replace("eine eine", "eine");
     sauphemismus = sauphemismus.replace("eine einen", "einen");
@@ -110,19 +115,19 @@ function generate() {
       var last_sauphi = document.getElementById("sauphemismus").innerHTML;
       last_sauphi = last_sauphi.replace("...", "");
       history.innerHTML +=
-        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ' +
+        '<li><a href="whatsapp://send?text=https://sauphemismus.github.io/%0a%0aAh, you played ' +
         last_sauphi +
-        '">Bock heute Abend ' +
+        '">Ah, you played ' +
         last_sauphi +
         "</a></li>";
       history_FIFO();
       document.getElementById("toggle-history").style.display = "flex";
     } catch (e) {}
     document.getElementById("query").innerHTML =
-      '<h1 id="sauphemismus">... the ' + sauphemismus + "!</h1>";
+      '<h1 id="sauphemismus">... the ' + sauphemismus + ", I'll have your " + piece + " in " + moves + " moves!</h1>";
     document.getElementById(
       "share"
-    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aHey, bock heute Abend ${sauphemismus}?';" id="whatsapp">
+    ).innerHTML = `<button class="button2" style="border-bottom: 0.2em solid #fff;" onclick="location.href='whatsapp://send?text=https://sauphemismus.github.io/%0a%0aAh, you played ${sauphemismus}!';" id="whatsapp">
       ${whatsapp_btn}
       <p>Einladen</p>  
         </button>`;
