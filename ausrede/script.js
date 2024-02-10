@@ -5,9 +5,11 @@ var whatsapp_btn = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 
 async function query(data) {
   const response = await fetch(
-    "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
+    //"https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
+    "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
     {
       headers: {
+        "Content-Type": "application/json",
         Authorization: "Bearer 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",
       },
       method: "POST",
@@ -22,14 +24,15 @@ function generate() {
   document.getElementsByClassName("loader")[0].style.display = "block";
   var output = "";
   query({
-    inputs:
-    "Ich muss leider auf meinen Hund aufpassen\nIch bin bei einem Umzug eingeladen\nmein Hund hat meine Hausaufgaben gegessen\nIch habe wirklich keine Lust\nIch hab mir beide Beine gebrochen\nIch bin entführt worden\nmeine Eltern haben Nein gesagt\ndie Welt geht grade unter\nIch bin allergisch auf Helfen\nalle meine Klamotten sind ungewaschen\ndie Bahn hatte mal wieder übelst verspätung\nIch bin immer noch im Urlaub\nIch hab die Zeit ganz vergesssen, und jetzt isses auch zu spät\nes gab hier ein Erdbeben, da bleibe ich lieber drinnen\nes gab nen Notfall in der Familie\nmeine Katze hat eine Existenzkrise\nes herrscht doch grade allgemeine Ausgangssperre\nmein Pferd ist krank geworden\nmeine Oma hat Geburtstag\nIch hab kein Geld mehr\nmeine Mutter ist verdammt enttäuscht\nIch muss meine Masterarbeit schreiben\nmeinen Vater hat im Haus ein Messer gefunden\nder Klimawandel\nich bin auf einem Bus in Ägypten\nmein Computer ist abgestürzt\nIch hatte Kontakt mit einer infizierten Person\nIch muss mich mit etwas Besserem beschäftigen\nIch stecke in einer Querdenkerdemo fest\nIch bin in einer Krankenhausstation\nes gab eine Lawine in der Nähe\n",
-    parameters: {
-      min_length: 500,
-      max_length: 500,
+    "inputs":
+      "Ich muss leider auf meinen Hund aufpassen\nIch bin bei einem Umzug eingeladen\nmein Hund hat meine Hausaufgaben gegessen\nIch habe wirklich keine Lust\nIch hab mir beide Beine gebrochen\nIch bin entführt worden\nmeine Eltern haben Nein gesagt\ndie Welt geht grade unter\nIch bin allergisch auf Helfen\nalle meine Klamotten sind ungewaschen\ndie Bahn hatte mal wieder übelst verspätung\nIch bin immer noch im Urlaub\nIch hab die Zeit ganz vergesssen, und jetzt isses auch zu spät\nes gab hier ein Erdbeben, da bleibe ich lieber drinnen\nes gab nen Notfall in der Familie\nmeine Katze hat eine Existenzkrise\nes herrscht doch grade allgemeine Ausgangssperre\nmein Pferd ist krank geworden\nmeine Oma hat Geburtstag\nIch hab kein Geld mehr\nmeine Mutter ist verdammt enttäuscht\nIch muss meine Masterarbeit schreiben\nmeinen Vater hat im Haus ein Messer gefunden\nder Klimawandel\nich bin auf einem Bus in Ägypten\nmein Computer ist abgestürzt\nIch hatte Kontakt mit einer infizierten Person\nIch muss mich mit etwas Besserem beschäftigen\nIch stecke in einer Querdenkerdemo fest\nIch bin in einer Krankenhausstation\nes gab eine Lawine in der Nähe\n",
+    "parameters": {
+      //min_length: 500,
+      //max_length: 500,
       temperature: Math.random() * 0.1 + 0.8,
+      max_new_tokens: 70,
     },
-    options: {
+    "options": {
       wait_for_model: true,
       use_cache: false,
     },

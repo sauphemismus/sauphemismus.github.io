@@ -5,9 +5,11 @@ var whatsapp_btn = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 
 async function query(data) {
   const response = await fetch(
-    "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
+    //"https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
+    "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
     {
       headers: {
+        "Content-Type": "application/json",
         Authorization: "Bearer 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",
       },
       method: "POST",
@@ -25,9 +27,10 @@ function generate() {
     inputs:
       "Sich ordentlich einen reinzulöten \nSich wie ein achtarmiger einen reinzuorgeln \nSich einen hinter die Rüstung römern \nSich ein Export zu importieren  \nSich einen aus seiner Fassung zu befreien \nSich einen durch den Bauch zu werfen \nSich einen hinter die Brust gleiten zu lassen \nSich einen an die Decke zu werfen \nSich einen über die Taille zu streichen \nSich als einen Knacker zu bezeichnen \nSich selbst zweimal glimpflich durchzuspielen \nSich einen bis zum Saum zu rabbanatisieren \nSich einen Silbergeldschein in den Zeigefinger zu stecken \nSich mitleidig behandeln zu lassen \nSich gegen die süße Brause schütteln zu lassen \nSich beinahe einen zu pummeln \nSich einen steinernen Doktor zu adeln \nSich ein Züchtbier zu servieren \nSich eine harmonische Anderthalbe zu vollfüllen \nSich an die eigene Schwiegermuschel zu binden \nSich einen ans dunkelgrünes Palfaun aufzustapfen \nSich durch die Donnerprobe zermatschen zu lassen \nSich im Crackerspace empfangen zu lassen \nSich in ein Langwasser übertaumeln zu lassen \nSich den Spiegelfregen in die Fresse schäumen zu lassen \nSich einen auf die Arschkante zu werfen",
     parameters: {
-      min_length: 500,
-      max_length: 500,
+      //min_length: 500,
+      //max_length: 500,
       temperature: Math.random() * 0.05 + 0.8,
+      max_new_tokens: 70,
     },
     options: {
       wait_for_model: true,

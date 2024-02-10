@@ -3,14 +3,14 @@
 function generate(input, inputCount, temperature, token_count, splitChar, followFunction, too_long){
 
   query({
-    inputs:
+    "inputs":
       input,  
-    parameters: {
+    "parameters": {
       min_length: token_count,
       max_length: token_count,
       temperature: temperature,
     },
-    options: {
+    "options": {
       wait_for_model: true,
       use_cache: false,
     },
@@ -34,9 +34,11 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
 
 async function query(data) {
   const response = await fetch(
-    "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
+    //"https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
+    "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
     {
       headers: {
+        "Content-Type": "application/json",
         Authorization: "Bearer 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",
       },
       method: "POST",
