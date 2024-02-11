@@ -203,10 +203,12 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
     var div = document.getElementById("sprichwort");
     div.style.fontFamily = randomFont();
     
-    if(autor_g)
-      show_new();
-    else
-      spruch_g = true;
+    //if(autor_g)
+    //  show_new();
+    //else
+    //  spruch_g = true;
+
+    show_new();
   }
   
   //function neuerAutor(text){
