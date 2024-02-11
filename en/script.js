@@ -64,7 +64,7 @@ function generate() {
     "parameters": {
       //min_length: 450,
       //max_length: 450,
-      temperature: (Math.random() * 0.2) + 1.2, // 1.2 war gut
+      temperature: (Math.random() * 0.2) + 1.0, // 1.2 war gut
       max_new_tokens: 70,
     },
     "options": {

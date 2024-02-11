@@ -67,7 +67,7 @@ function generate() {
     "parameters": {
       //min_length: 500,
       //max_length: 500,
-      temperature: (Math.random() * 0.2) + 1.0,
+      temperature: (Math.random() * 0.2) + 0.8,
       //do_sample: true, // more random, not real language????
       //top_p: 0.8,
       //top_k: 10,
