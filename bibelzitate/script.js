@@ -95,11 +95,11 @@ function init(){
 
   generate(
     "Vorallem behüte dein Herz, denn es hat den größten Einfluss auf dein Leben!*Seid niemandem etwas schuldig, außer dass ihr euch untereinander liebt; denn wer den andern liebt, der hat das Gesetz erfüllt.*Der Herr ist nahe denen, die zerbrochenen Herzens sind, und er hilft denen, die zerschlagenen Geistes sind.*Er heilt, die zerbrochenen Herzens sind, und verbindet ihre Wunden.*Glaube, Hoffnung und Liebe, diese drei bleiben. Aber am größten ist die Liebe.*Gelobt sei der Herr täglich. Gott legt uns eine Last auf, aber er hilft uns auch.*Gott ist die Liebe und wer in der Liebe bleibt, der bleibt in Gott und Gott in ihm.*Der Herr ist mein Licht und mein Heil; vor wem sollte ich mich fürchten! Der Herr ist meines Lebens Kraft; vor wem sollte mir grauen!*Ich behalte dein Wort in meinen Herzen damit ich nicht wieder dich sündige.*Ein frohes Herz macht ein glückliches Gesicht; ein gebrochenes Herz betrübt den Geist.Sei mutig und entschlossen! Lass dich nicht einschüchtern, und hab keine Angst! Denn ich, der Herr, dein Gott, bin bei dir, wohin du auch gehst.*",
-    10, 0.8, 500, "*", neuerSpruch, 150);
+    10, 0.9, 500, "*", neuerSpruch, 150);
 
   generate(
     "Jesaia*Jeremia*Baruch*Ezechiel*Daniel*Hosea*Joel*Amos*Obadiah*Jonah*Micah*Nahum*Habakuk*Zephaniah*Haggai*Zacharias*Malachias*Matthäus*Markus*Lukas*Johannes*",
-    21, 1.5, 100, "*", neuerAutor, 100);
+    21, 1.0, 100, "*", neuerAutor, 100);
 
 
   if(background)
