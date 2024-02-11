@@ -209,6 +209,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
     //  spruch_g = true;
 
     show_new();
+    
   }
   
   //function neuerAutor(text){
