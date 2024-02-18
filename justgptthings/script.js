@@ -40,7 +40,8 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   async function query(data) {
     const response = await fetch(
       //"https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
-      "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
+      //"https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
+      "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta",
       {
         headers: {
           "Content-Type": "application/json",

@@ -39,7 +39,8 @@ var whatsapp_btn = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 //import fetch from "node-fetch";  
 async function query(data) {
   const response = await fetch(
-    "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
+    //"https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
+    "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta",
     //"https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
     //"https://api-inference.huggingface.co/models/openai-community/gpt2-xl",
     //"https://api-inference.huggingface.co/models/bigscience/bloom",
