@@ -6,13 +6,13 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
     "inputs":
       input,  
     "parameters": {
-      min_length: token_count,
-      max_length: token_count,
+      //min_length: token_count,
+      //max_length: token_count,
       temperature: temperature,
     },
     "options": {
-      wait_for_model: true,
       use_cache: false,
+      wait_for_model: true,
     },
   }).then((response) => {
     output = JSON.stringify(response);
@@ -101,7 +101,7 @@ function init(){
 
   generate(
     "Jesaia*Jeremia*Baruch*Ezechiel*Daniel*Hosea*Joel*Amos*Obadiah*Jonah*Micah*Nahum*Habakuk*Zephaniah*Haggai*Zacharias*Malachias*Matthäus*Markus*Lukas*Johannes*",
-    21, 1.0, 100, "*", neuerAutor, 100);
+    21, 1.1, 100, "*", neuerAutor, 100);
 
 
   if(background)
