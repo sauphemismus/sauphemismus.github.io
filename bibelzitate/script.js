@@ -101,7 +101,7 @@ function init(){
 
   generate(
     "Jesaia*Jeremia*Baruch*Ezechiel*Daniel*Hosea*Joel*Amos*Obadiah*Jonah*Micah*Nahum*Habakuk*Zephaniah*Haggai*Zacharias*Malachias*Matthäus*Markus*Lukas*Johannes*",
-    21, 1.1, 100, "*", neuerAutor, 100);
+    21, 1.0, 100, "*", neuerAutor, 100);
 
 
   if(background)
