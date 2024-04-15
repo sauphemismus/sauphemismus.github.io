@@ -22,7 +22,7 @@
 
   }
   
-  #sprichwort{
+  #joke_wrapper{
     display: grid;
     color: white;
     text-shadow: 0 0 10px black;
@@ -38,7 +38,7 @@
     
   }
   
-  #spruch{
+  #joke{
     font-size: 2em;
     padding-top: 1.3em;
     -webkit-text-stroke-width: 1px;
@@ -50,7 +50,7 @@
  
   }
   
-  #autor{
+  #author{
     font-size: 1em;
     text-align: center;
     color: #ffffffbf;
