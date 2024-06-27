@@ -7,7 +7,7 @@ async function randomBg(topic) {
   // replace all spaces with '+' for the API call
   topic = topic.replace(/ /g, '+');
 
-  const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=3`);
+  const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=20`);
   const data = await response.json();
   
   // chose a random image from the response (depending on the number of hits)
@@ -58,6 +58,9 @@ async function query(data) {
     //"https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta",
     
     "https://api-inference.huggingface.co/models/google/gemma-7b",
+
+    //"https://api-inference.huggingface.co/models/benjamin/gpt2-wechsel-german",
+    //"https://api-inference.huggingface.co/models/dbmdz/german-gpt2",
     {
       headers: {
         "Content-Type": "application/json",
@@ -75,14 +78,14 @@ function generate() {
   document.getElementsByClassName("loader")[0].style.display = "block";
   randomBg(randomTopic());
   var output = "";
-
+  var temperature = (Math.random() * 0.2) + 0.6
   query({
     "inputs":
-      "sich amtlich einen umzuhängen*sich einen hinter die Brust gleiten zu lassen*sich als einen Knacker zu bezeichnen*sich die Brause schütteln zu lassen*sich beinahe einen zu pummeln*sich einen steinernen Doktor zu adeln*sich ein Züchtbier zu servieren*sich eine harmonische Halbe zu vollfüllen*sich in ein Langwasser übertaumeln zu lassen*sich einen in die Fresse schäumen zu lassen*sich den Kopf umzurühren*sich die Wäsche abziehen zu lassen*sich glimpflich die Säfte zu mischen*sich einen in die Schüssel zu rühren*sich einen aufsteigen zu lassen*sich den Kübel zu düngen *sich einen in den Hals zu schütten*sich die Konserven zu öffnen*sich die Latschen besudeln zu lassen*sich einen in die Schädelhöhle zu rühren*sich ordentlich einen reinzulöten*sich wie ein Achtarmiger einen reinzuorgeln*sich einen hinter die Rüstung zu römern*sich ein Export zu importieren*sich einen aus der Fassung zu befreien*sich den Helm zu lackieren*sich die Kontakte feucht zu legen*sich einen Henkel vom Humpen zu brechen*sich den Schädel zu fluten*sich einen hinter die Kiemen zu peitschen*",
+      "Deine Aufgabe ist es, neue Ausdrücke für \"sich betrinken\" zu schreiben. Hier ist eine Liste: sich amtlich einen umzuhängen*sich einen hinter die Brust gleiten zu lassen*sich als einen Knacker zu bezeichnen*sich die Brause schütteln zu lassen*sich beinahe einen zu pummeln*sich einen steinernen Doktor zu adeln*sich ein Züchtbier zu servieren*sich eine harmonische Halbe zu vollfüllen*sich in ein Langwasser übertaumeln zu lassen*sich einen in die Fresse schäumen zu lassen*sich den Kopf umzurühren*sich die Wäsche abziehen zu lassen*sich glimpflich die Säfte zu mischen*sich einen in die Schüssel zu rühren*sich einen aufsteigen zu lassen*sich den Kübel zu düngen *sich einen in den Hals zu schütten*sich die Konserven zu öffnen*sich die Latschen besudeln zu lassen*sich einen in die Schädelhöhle zu rühren*sich ordentlich einen reinzulöten*sich wie ein Achtarmiger einen reinzuorgeln*sich einen hinter die Rüstung zu römern*sich ein Export zu importieren*sich einen aus der Fassung zu befreien*sich den Helm zu lackieren*sich die Kontakte feucht zu legen*sich einen Henkel vom Humpen zu brechen*sich den Schädel zu fluten*sich einen hinter die Kiemen zu peitschen*",
     "parameters": {
       //min_length: 500,
       //max_length: 500,
-      temperature: (Math.random() * 0.2) + 0.8,
+      temperature: temperature,
       //do_sample: true, // more random, not real language????
       //top_p: 0.8,
       //top_k: 10,
@@ -122,6 +125,8 @@ function generate() {
     sauphemismus = sauphemismus.replace("einen als eine", "als eine");
     sauphemismus = sauphemismus.replace("einen mit einem", "mit einem");
     document.getElementsByClassName("loader")[0].style.display = "none";
+
+    console.log(sauphemismus, "\t temperature: ", Math.round(temperature * 100) / 100);
     //update history
     try {
       var history = document.getElementById("history");
