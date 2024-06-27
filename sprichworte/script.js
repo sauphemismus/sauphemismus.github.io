@@ -1,3 +1,6 @@
+import { randomBg } from '../utils.js';
+
+
 // IN this script, we use calls to API to generate text ("jokes") based on input (a list of "jokes") and show it on the website.
 // We also use the generated text to extract keywords and use them to generate a random background image.
 // The script is used to create a website that shows a random joke and a random background image based on the keywords of the joke.
@@ -128,43 +131,29 @@ async function query(data, api_url) {
  * Sets a random background image for the specified topic.
  * @param {string} topic - The topic for the background image.
  */
-//function randomBg(topic){
-//  width = document.documentElement.clientWidth + 10;
-//  height = document.documentElement.clientHeight + 10;
-//  var random = Math.floor(Math.random() * 10000);
-//
-//  if (background){
-//    div = document.getElementById("bg1");
-//  } 
-//  else {
-//    div = document.getElementById("bg2");
-//  }
-//  div.style.backgroundImage = "url('https://source.unsplash.com/random/" + width + "x" + height + "/?sig=" + random + "/&" + topic + "')";
-//
-//
-//
-//}
 async function randomBg(topic) {
   const width = document.documentElement.clientWidth + 10;
   const height = document.documentElement.clientHeight + 10;
-  const orientation = width > height ? 'landscape' : 'portrait';
-  if (Math.abs(width - height) < 100) {
-    orientation = 'squarish';
-  }
-
-  console.log(`Fetching image for topic: ${topic}`);
+  const orientation = width > height ? 'horizontal' : 'vertical';
+  
+  console.log(`Fetching image for topic: ${topic}` + " \torientation: " + orientation);
   // replace all spaces with '+' for the API call
   topic = topic.replace(/ /g, '+');
 
   const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=3`);
   const data = await response.json();
-  const imageUrl = data.hits[0].largeImageURL;
-
+  
+  // chose a random image from the response (depending on the number of hits)
+  const randomIndex = Math.floor(Math.random() * data.hits.length);
+  const imageUrl = data.hits[randomIndex].largeImageURL;
+  
   const div = background ? document.getElementById("bg1") : document.getElementById("bg2");
   div.style.backgroundImage = `url('${imageUrl}')`;
-  div.style.backgroundSize = 'cover'; // Stellt sicher, dass das Bild den gesamten Bereich abdeckt
-  div.style.backgroundRepeat = 'no-repeat'; // Verhindert die Wiederholung des Bildes
+  div.style.backgroundSize = 'cover'; 
+  div.style.backgroundRepeat = 'no-repeat'; 
+  div.style.backgroundPosition = 'center';
 }
+
 
 /**
  * Generates a random background based on the keywords extracted from the given text.

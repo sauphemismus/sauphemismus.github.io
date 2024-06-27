@@ -64,37 +64,27 @@ document.onload = document.getElementById("history").innerHTML = "";
 
 
 
-//function randomBg(){
-//  ratio = window.devicePixelRatio || 1;
-//  width = window.screen.width * ratio;
-//  height = window.screen.height * ratio;
-//  var random = Math.floor(Math.random() * 10000);
-//  
-//  if(background)
-//    div = document.getElementById("bg1");
-//  else div = document.getElementById("bg2");
-//  div.style.backgroundImage = "url('https://source.unsplash.com/random/" + width + "x" + height + "/?nature,&" + random + "')";
-//}
 async function randomBg(topic) {
   const width = document.documentElement.clientWidth + 10;
   const height = document.documentElement.clientHeight + 10;
-  const orientation = width > height ? 'landscape' : 'portrait';
-  if (Math.abs(width - height) < 100) {
-    orientation = 'squarish';
-  }
-
-  console.log(`Fetching image for topic: ${topic}`);
+  const orientation = width > height ? 'horizontal' : 'vertical';
+  
+  console.log(`Fetching image for topic: ${topic}` + " \torientation: " + orientation);
   // replace all spaces with '+' for the API call
   topic = topic.replace(/ /g, '+');
 
   const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=3`);
   const data = await response.json();
-  const imageUrl = data.hits[0].largeImageURL;
-
+  
+  // chose a random image from the response (depending on the number of hits)
+  const randomIndex = Math.floor(Math.random() * data.hits.length);
+  const imageUrl = data.hits[randomIndex].largeImageURL;
+  
   const div = background ? document.getElementById("bg1") : document.getElementById("bg2");
   div.style.backgroundImage = `url('${imageUrl}')`;
-  div.style.backgroundSize = 'cover'; // Stellt sicher, dass das Bild den gesamten Bereich abdeckt
-  div.style.backgroundRepeat = 'no-repeat'; // Verhindert die Wiederholung des Bildes
+  div.style.backgroundSize = 'cover'; 
+  div.style.backgroundRepeat = 'no-repeat'; 
+  div.style.backgroundPosition = 'center';
 }
 
 function randomFont(){
