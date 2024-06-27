@@ -1,6 +1,3 @@
-import { randomBg } from '../utils.js';
-
-
 // IN this script, we use calls to API to generate text ("jokes") based on input (a list of "jokes") and show it on the website.
 // We also use the generated text to extract keywords and use them to generate a random background image.
 // The script is used to create a website that shows a random joke and a random background image based on the keywords of the joke.
