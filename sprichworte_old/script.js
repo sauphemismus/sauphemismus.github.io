@@ -99,19 +99,45 @@ async function query(data, api_url) {
 }
   
 
-function randomBg(topic){
-  width = document.documentElement.clientWidth + 10;
-  height = document.documentElement.clientHeight + 10;
-  var random = Math.floor(Math.random() * 10000);
-
-  if (background){
-    div = document.getElementById("bg1");
-  } 
-  else {
-    div = document.getElementById("bg2");
+//function randomBg(topic){
+//  width = document.documentElement.clientWidth + 10;
+//  height = document.documentElement.clientHeight + 10;
+//  var random = Math.floor(Math.random() * 10000);
+//
+//  if (background){
+//    div = document.getElementById("bg1");
+//  } 
+//  else {
+//    div = document.getElementById("bg2");
+//  }
+//  div.style.backgroundImage = "url('https://source.unsplash.com/random/" + width + "x" + height + "/?sig=" + random + "/&" + topic + "')";
+//
+//}
+async function randomBg(topic) {
+  const width = document.documentElement.clientWidth + 10;
+  const height = document.documentElement.clientHeight + 10;
+  const orientation = width > height ? 'landscape' : 'portrait';
+  // if roughly square, set as "squarish"
+  if (Math.abs(width - height) < 100) {
+    orientation = 'squarish';
   }
-  div.style.backgroundImage = "url('https://source.unsplash.com/random/" + width + "x" + height + "/?sig=" + random + "/&" + topic + "')";
 
+  const response = await fetch(`https://api.unsplash.com/photos/random?query=${topic}&client_id=_q_vs_cRGG5Of4H62kvdDqReqFoMuuDzILZhWCjqA4c&w=${width}&h=${height}`);
+  const data = await response.json();
+  const imageUrl = data.urls.custom; // Verwenden Sie 'custom', wenn Sie spezifische Abmessungen angegeben haben
+
+ 
+  // if the background could not be loaded,, print an error message to the console
+  if (!imageUrl) {
+    console.error('Could not load image');
+    return;
+  }
+  
+
+  const div = background ? document.getElementById("bg1") : document.getElementById("bg2");
+  div.style.backgroundImage = `url('${imageUrl}?w=${width}&h=${height}')`;
+  div.style.backgroundSize = 'cover'; // Stellt sicher, dass das Bild den gesamten Bereich abdeckt
+  div.style.backgroundRepeat = 'no-repeat'; // Verhindert die Wiederholung des Bildes
 }
 
 function randomFont(){
