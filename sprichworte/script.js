@@ -148,25 +148,20 @@ async function randomBg(topic) {
   const width = document.documentElement.clientWidth + 10;
   const height = document.documentElement.clientHeight + 10;
   const orientation = width > height ? 'landscape' : 'portrait';
-  // if roughly square, set as "squarish"
   if (Math.abs(width - height) < 100) {
     orientation = 'squarish';
   }
 
-  const response = await fetch(`https://api.unsplash.com/photos/random?query=${topic}&client_id=_q_vs_cRGG5Of4H62kvdDqReqFoMuuDzILZhWCjqA4c&w=${width}&h=${height}`);
-  const data = await response.json();
-  const imageUrl = data.urls.custom; // Verwenden Sie 'custom', wenn Sie spezifische Abmessungen angegeben haben
+  console.log(`Fetching image for topic: ${topic}`);
+  // replace all spaces with '+' for the API call
+  topic = topic.replace(/ /g, '+');
 
- 
-  // if the background could not be loaded,, print an error message to the console
-  if (!imageUrl) {
-    console.error('Could not load image');
-    return;
-  }
-  
+  const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=3`);
+  const data = await response.json();
+  const imageUrl = data.hits[0].largeImageURL;
 
   const div = background ? document.getElementById("bg1") : document.getElementById("bg2");
-  div.style.backgroundImage = `url('${imageUrl}?w=${width}&h=${height}')`;
+  div.style.backgroundImage = `url('${imageUrl}')`;
   div.style.backgroundSize = 'cover'; // Stellt sicher, dass das Bild den gesamten Bereich abdeckt
   div.style.backgroundRepeat = 'no-repeat'; // Verhindert die Wiederholung des Bildes
 }
