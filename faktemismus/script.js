@@ -1,6 +1,3 @@
-// IN this script, we use calls to API to generate text ("jokes") based on input (a list of "jokes") and show it on the website.
-// We also use the generated text to extract keywords and use them to generate a random background image.
-// The script is used to create a website that shows a random joke and a random background image based on the keywords of the joke.
 
 // define global variables
 API_KEY = "Bearer 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";
@@ -13,8 +10,71 @@ API_URL_JOKE = "https://api-inference.huggingface.co/models/google/gemma-7b";
 API_URL_KEYWORDS = "https://api-inference.huggingface.co/models/KoichiYasuoka/bert-base-german-upos";
 
 
+// define the input prompt for the joke generation
+const inputPromptArray = ["Seinen Hit \"I'm Still Standing\" schrieb Elton John im überfüllten Regionalexpress zwischen Köln und Münster",
+"Die Trompete wurde nach ihrem Erfinder Pete Trom benannt",
+"Der Kölner Karneval wurde 1811 ursprünglich erfunden, um einem Produktionsüberschuss in der lokalen Alkoholindustrie entgegenzuwirken",
+"Das größte Paradoxon der Welt ist kleiner als das zweitgrößte",
+"Die meisten Menschen haben mehr als zwei Arme",
+"Shrek ist der einzige Disneyfilm, in dem der Protagonist eine blaue Hautfarbe hat",
+"Historiker rätseln bis heute, ob zuerst der Brief oder der Briefkasten erfunden wurde",
+"Wenn man bei zu schnellem Rückwärtsfahren geblitzt wird, werden einem Punkte in Flensburg abgezogen",
+"Wenn man keine Handcreme zu Hause hat, kann man trockene Hande auch mit Semmelbroseln einreiben. Es wird nur nicht helfen",
+"Die Erdatmosphäre besteht zu 100 Prozent aus Luft",
+"Regenbögen sind eigentlich schwarz-weiß. Unsere Augen bilden sich bloß ein, dass sie bunt sind, weil sie dadurch viel schöner aussehen",
+"Vampire schmecken nach Lachs, Werwolfe dagegen eher nach Hühnchen mit Erdnusssoße",
+"Jede Stadt besteht aus genau vier Vierteln",
+"Bei der Herstellung von Glas werden ausschließlich unsichtbare Bestandteile verarbeitet",
+"Mit den ersten Lichtstrahlen des anbrechendes Tages zerfallen Bäcker zu Mehlstaub",
+"Die ursprüngliche Version des Caipirinha enthielt pro Glas 1-2 Piranhas. Diese werden heutzutage aus versicherungstechnischen Gründen in der Regel durch Limettenstücke ersetzt",
+"Ein Wesen von kleiner bis mittlerer Große ohne ein besonders erschreckendes Äußeres nennt man \"Getüm\"",
+"Bevor es eine offentliche Mullabfuhr gab, mussten alle ihren Abfall mit der Post zur Mülldeponie schicken",
+"Frisch gepresster Zitronensaft ist im Kühlschrank 1 - 2 Tage haltbar. Für längere Haltbarkeit kann man zur Konservierung einen Spritzer Zitronensaft dazu geben",
+"Bis 1987 war es in Mehrfamilienhausern Pflicht, neben einem Hausmeister noch einen Hausvizemeister zu haben",
+"Ein Tischler kann keine Stühle anfertigen",
+"Beim Schach gibt es genau 92 (also 7^3) mögliche Spielzüge",
+"In manchen Gegenden von Vietnam soll es Glück bringen, sich an einer roten Ampel von einem Feuerwehrauto überfahren zu lassen",
+"Der Rührbesen, das Rührei und der Rührteig wurden im Rührgebiet erfunden",
+"Als der Erfinder des Wartezimmers seine Erfindung patentieren lassen wollte, ging er direkt in das Büro des Patenbeamten",
+"Küchenmesser haben in anderen Räumen nur 30-40 % ihrer Schneidekraft",
+"Eine Studie der Universitat Wien fand heraus, dass Männer, die zwischen Januar und Dezember geboren werden, eine höhere Wahrscheinlichkeit haben, Linkshander zu sein",
+"Jeder Mensch ist pro Tag für 0,000057 Sekunden unsichtbar",
+"Wenn die eigene Schwester einen Jungen zur Welt bringt, dann wird man Onkel. Wenn es jedoch ein Mädchen ist, wird man Tante",
+"Niederländer sind genetisch nicht dazu in der Lage, auf Berge zu klettern",
+"Aus Larmschutzgrunden darf man nach 21 Uhr sowie am Wochenende nicht mit Kanonen auf Spatzen schießen",
+"Einen zwolfseitigen Supermarkt nennen Mathematiker Dodekaedeka",
+"Das Adelsgeschlecht der Thurn und Taxis begründete ihr Vermögen mit dem Betrieb von Sporthallen und zahlreichen Mietwagenunternehmen",
+"Vor der Einführung der Kartoffel wurden Pommes in Europa aus Baumrinde hergestellt",
+"Briefumschläge werden knuspriger, wenn man das Porto erst nach dem Pürieren aufklebt",
+"Nicht einmal ein Zehntel aller in Deutschland verkauften Brausekopfdichtungen stammt aus natürlichem Anbau",
+"Im Jahr 791 n. Chr. wurde die bis dahin in Mitteleuropa gängige Praxis verboten. Kinder in Kessel mit Zaubertrank zu werfen, damit sie Superkräfte erhalten",
+"Seit 1977 gelten Kamele in der Antarktis als ausgerottet",
+"Das Wort \"Mörtel\" haben sich Bauarbeiter im 17. Jahrhundert ausgedacht, weil sie keine Lust mehr hatten, ständig, \"Mauersteinverbundpaste\" zu sagen",
+"Walnüsse schlafen immer nur mit einer Nusshälfte, während die andere wach ist",
+]
+const inputLength = inputPromptArray.length;
+const inputTemperature = (Math.random() * 0.1) + 0.7; // temperature for generating the joke
+const splitChar = "*"; // character to split the generated output into an array
+const tokenCount = 500; // desired length of the generated text in tokens
+
+
 // --------------------------------------------------------------------------------------------
 // General functions for generating text and keywords, and setting background images
+/**
+ * Creates an input prompt by shuffling the elements in the inputPromptArray and concatenating them with an asterisk.
+ * @param {Array} inputPromptArray - The array of input prompts.
+ * @returns {string} The input prompt string.
+ */
+function createInputPrompt (inputPromptArray){
+  var inputPrompt = "";
+  // shuffle the inputPromptArray all the time
+  inputPromptArray.sort(() => Math.random() - 0.5);
+  for (var i = 0; i < inputPromptArray.length; i++){
+    inputPrompt += inputPromptArray[i] + "*";
+  }
+  return inputPrompt;
+}
+
 /**
  * Generates text based on the provided input using the GPT model.
  *
@@ -46,9 +106,8 @@ function generateJoke(input, inputCount, temperature, token_count, splitChar, fo
     console.log(output);
     output = output.replace(/\n/g, splitChar);
     output = output.replace(/\\n/gm, splitChar);
-    output = output.replace(/[\[\]\{\}\\"]/g, "");
+    output = output.replace(/[\[\]\{\}\\]/g, "");
     output = output.replace("generated_text:", "");
-    
 
     var outArray = output.split(splitChar);
     res = outArray[inputCount];
@@ -224,8 +283,12 @@ function onButtonClick(){
   //div.style.fontFamily = randomFont();
 
   generateJoke(
-    "Seinen Hit \"I'm Still Standing\" schrieb Elton John im überfüllten Regionalexpress zwischen Köln und Münster.*Die Trompete wurde nach ihrem Erfinder Pete Trom benannt.*Der Kölner Karneval wurde 1811 ursprünglich erfunden, um einem Produktionsüberschuss in der lokalen Alkoholindustrie entgegenzuwirken.*Das größte Paradoxon der Welt ist kleiner als das zweitgrößte.*Die meisten Menschen haben mehr als zwei Arme.*Shrek ist der einzige Disneyfilm, in dem der Protagonist eine blaue Hautfarbe hat.*Historiker rätseln bis heute, ob zuerst der Brief oder der Briefkasten erfunden wurde.*Wenn man bei zu schnellem Rückwärtsfahren geblitzt wird, werden einem Punkte in Flensburg abgezogen.*Wenn man keine Handcreme zu Hause hat, kann man trockene Hande auch mit Semmelbroseln einreiben. Es wird nur nicht helfen.*Die Erdatmosphäre besteht zu 100 Prozent aus Luft.*Regenbögen sind eigentlich schwarz-weiß. Unsere Augen bilden sich bloß ein, dass sie bunt sind, weil sie dadurch viel schöner aussehen.*Vampire schmecken nach Lachs, Werwolfe dagegen eher nach Hühnchen mit Erdnusssoße.*Jede Stadt besteht aus genau vier Vierteln.*Bei der Herstellung von Glas werden ausschließlich unsichtbare Bestandteile verarbeitet.*Mit den ersten Lichtstrahlen des anbrechendes Tages zerfallen Bäcker zu Mehlstaub.*Die ursprüngliche Version des Caipirinha enthielt pro Glas 1-2 Piranhas. Diese werden heutzutage aus versicherungstechnischen Gründen in der Regel durch Limettenstücke ersetzt.*Ein Wesen von kleiner bis mittlerer Große ohne ein besonders erschreckendes Äußeres nennt man \"Getüm\".*Bevor es eine offentliche Mullabfuhr gab, mussten alle ihren Abfall mit der Post zur Mülldeponie schicken.*Frisch gepresster Zitronensaft ist im Kühlschrank 1 - 2 Tage haltbar. Für längere Haltbarkeit kann man zur Konservierung einen Spritzer Zitronensaft dazu geben.*Bis 1987 war es in Mehrfamilienhausern Pflicht, neben einem Hausmeister noch einen Hausvizemeister zu haben.*Ein Tischler kann keine Stühle anfertigen.*Beim Schach gibt es genau 92 (also 7^3) mögliche Spielzüge.*In manchen Gegenden von Vietnam soll es Glück bringen, sich an einer roten Ampel von einem Feuerwehrauto überfahren zu lassen.*Der Rührbesen, das Rührei und der Rührteig wurden im Rührgebiet erfunden.*Als der Erfinder des Wartezimmers seine Erfindung patentieren lassen wollte, ging er direkt in das Büro des Patenbeamten.*Küchenmesser haben in anderen Räumen nur 30-40 % ihrer Schneidekraft.*Eine Studie der Universitat Wien fand heraus, dass Männer, die zwischen Januar und Dezember geboren werden, eine höhere Wahrscheinlichkeit haben, Linkshander zu sein.*Jeder Mensch ist pro Tag für 0,000057 Sekunden unsichtbar.*Wenn die eigene Schwester einen Jungen zur Welt bringt, dann wird man Onkel. Wenn es jedoch ein Mädchen ist, wird man Tante.*Niederländer sind genetisch nicht dazu in der Lage, auf Berge zu klettern.*Aus Larmschutzgrunden darf man nach 21 Uhr sowie am Wochenende nicht mit Kanonen auf Spatzen schießen.*Einen zwolfseitigen Supermarkt nennen Mathematiker Dodekaedeka.*Das Adelsgeschlecht der Thurn und Taxis begründete ihr Vermögen mit dem Betrieb von Sporthallen und zahlreichen Mietwagenunternehmen.*Vor der Einführung der Kartoffel wurden Pommes in Europa aus Baumrinde hergestellt.*",
-    34, (Math.random() * 0.1) + 0.7, 500, "*", updateJoke);
+    createInputPrompt(inputPromptArray),
+    inputLength, 
+    inputTemperature, 
+    tokenCount, 
+    splitChar, 
+    updateJoke);
   
 }
 
@@ -240,8 +303,12 @@ function updateJoke(input_joke){
   // generate an extra joke at first call
   if (joke_show == ""){
     generateJoke(
-      "Seinen Hit \"I'm Still Standing\" schrieb Elton John im überfüllten Regionalexpress zwischen Köln und Münster.*Die Trompete wurde nach ihrem Erfinder Pete Trom benannt.*Der Kölner Karneval wurde 1811 ursprünglich erfunden, um einem Produktionsüberschuss in der lokalen Alkoholindustrie entgegenzuwirken.*Das größte Paradoxon der Welt ist kleiner als das zweitgrößte.*Die meisten Menschen haben mehr als zwei Arme.*Shrek ist der einzige Disneyfilm, in dem der Protagonist eine blaue Hautfarbe hat.*Historiker rätseln bis heute, ob zuerst der Brief oder der Briefkasten erfunden wurde.*Wenn man bei zu schnellem Rückwärtsfahren geblitzt wird, werden einem Punkte in Flensburg abgezogen.*Wenn man keine Handcreme zu Hause hat, kann man trockene Hande auch mit Semmelbroseln einreiben. Es wird nur nicht helfen.*Die Erdatmosphäre besteht zu 100 Prozent aus Luft.*Regenbögen sind eigentlich schwarz-weiß. Unsere Augen bilden sich bloß ein, dass sie bunt sind, weil sie dadurch viel schöner aussehen.*Vampire schmecken nach Lachs, Werwolfe dagegen eher nach Hühnchen mit Erdnusssoße.*Jede Stadt besteht aus genau vier Vierteln.*Bei der Herstellung von Glas werden ausschließlich unsichtbare Bestandteile verarbeitet.*Mit den ersten Lichtstrahlen des anbrechendes Tages zerfallen Bäcker zu Mehlstaub.*Die ursprüngliche Version des Caipirinha enthielt pro Glas 1-2 Piranhas. Diese werden heutzutage aus versicherungstechnischen Gründen in der Regel durch Limettenstücke ersetzt.*Ein Wesen von kleiner bis mittlerer Große ohne ein besonders erschreckendes Äußeres nennt man \"Getüm\".*Bevor es eine offentliche Mullabfuhr gab, mussten alle ihren Abfall mit der Post zur Mülldeponie schicken.*Frisch gepresster Zitronensaft ist im Kühlschrank 1 - 2 Tage haltbar. Für längere Haltbarkeit kann man zur Konservierung einen Spritzer Zitronensaft dazu geben.*Bis 1987 war es in Mehrfamilienhausern Pflicht, neben einem Hausmeister noch einen Hausvizemeister zu haben.*Ein Tischler kann keine Stühle anfertigen.*Beim Schach gibt es genau 92 (also 7^3) mögliche Spielzüge.*In manchen Gegenden von Vietnam soll es Glück bringen, sich an einer roten Ampel von einem Feuerwehrauto überfahren zu lassen.*Der Rührbesen, das Rührei und der Rührteig wurden im Rührgebiet erfunden.*Als der Erfinder des Wartezimmers seine Erfindung patentieren lassen wollte, ging er direkt in das Büro des Patenbeamten.*Küchenmesser haben in anderen Räumen nur 30-40 % ihrer Schneidekraft.*Eine Studie der Universitat Wien fand heraus, dass Männer, die zwischen Januar und Dezember geboren werden, eine höhere Wahrscheinlichkeit haben, Linkshander zu sein.*Jeder Mensch ist pro Tag für 0,000057 Sekunden unsichtbar.*Wenn die eigene Schwester einen Jungen zur Welt bringt, dann wird man Onkel. Wenn es jedoch ein Mädchen ist, wird man Tante.*Niederländer sind genetisch nicht dazu in der Lage, auf Berge zu klettern.*Aus Larmschutzgrunden darf man nach 21 Uhr sowie am Wochenende nicht mit Kanonen auf Spatzen schießen.*Einen zwolfseitigen Supermarkt nennen Mathematiker Dodekaedeka.*Das Adelsgeschlecht der Thurn und Taxis begründete ihr Vermögen mit dem Betrieb von Sporthallen und zahlreichen Mietwagenunternehmen.*Vor der Einführung der Kartoffel wurden Pommes in Europa aus Baumrinde hergestellt.*",
-      34, (Math.random() * 0.1) + 0.7, 500, "*", updateJoke);
+      createInputPrompt(inputPromptArray),
+      inputLength, 
+      inputTemperature, 
+      tokenCount,
+      splitChar,
+      updateJoke);
       return
   }
 
