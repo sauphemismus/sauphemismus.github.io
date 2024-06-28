@@ -11,49 +11,75 @@ API_URL_KEYWORDS = "https://api-inference.huggingface.co/models/KoichiYasuoka/be
 
 
 // define the input prompt for the joke generation
-const inputPromptArray = ["Seinen Hit \"I'm Still Standing\" schrieb Elton John im überfüllten Regionalexpress zwischen Köln und Münster",
-"Die Trompete wurde nach ihrem Erfinder Pete Trom benannt",
-"Der Kölner Karneval wurde 1811 ursprünglich erfunden, um einem Produktionsüberschuss in der lokalen Alkoholindustrie entgegenzuwirken",
-"Das größte Paradoxon der Welt ist kleiner als das zweitgrößte",
-"Die meisten Menschen haben mehr als zwei Arme",
-"Shrek ist der einzige Disneyfilm, in dem der Protagonist eine blaue Hautfarbe hat",
-"Historiker rätseln bis heute, ob zuerst der Brief oder der Briefkasten erfunden wurde",
-"Wenn man bei zu schnellem Rückwärtsfahren geblitzt wird, werden einem Punkte in Flensburg abgezogen",
-"Wenn man keine Handcreme zu Hause hat, kann man trockene Hande auch mit Semmelbroseln einreiben. Es wird nur nicht helfen",
-"Die Erdatmosphäre besteht zu 100 Prozent aus Luft",
-"Regenbögen sind eigentlich schwarz-weiß. Unsere Augen bilden sich bloß ein, dass sie bunt sind, weil sie dadurch viel schöner aussehen",
-"Vampire schmecken nach Lachs, Werwolfe dagegen eher nach Hühnchen mit Erdnusssoße",
-"Jede Stadt besteht aus genau vier Vierteln",
-"Bei der Herstellung von Glas werden ausschließlich unsichtbare Bestandteile verarbeitet",
-"Mit den ersten Lichtstrahlen des anbrechendes Tages zerfallen Bäcker zu Mehlstaub",
-"Die ursprüngliche Version des Caipirinha enthielt pro Glas 1-2 Piranhas. Diese werden heutzutage aus versicherungstechnischen Gründen in der Regel durch Limettenstücke ersetzt",
-"Ein Wesen von kleiner bis mittlerer Große ohne ein besonders erschreckendes Äußeres nennt man \"Getüm\"",
-"Bevor es eine offentliche Mullabfuhr gab, mussten alle ihren Abfall mit der Post zur Mülldeponie schicken",
-"Frisch gepresster Zitronensaft ist im Kühlschrank 1 - 2 Tage haltbar. Für längere Haltbarkeit kann man zur Konservierung einen Spritzer Zitronensaft dazu geben",
-"Bis 1987 war es in Mehrfamilienhausern Pflicht, neben einem Hausmeister noch einen Hausvizemeister zu haben",
-"Ein Tischler kann keine Stühle anfertigen",
-"Beim Schach gibt es genau 92 (also 7^3) mögliche Spielzüge",
-"In manchen Gegenden von Vietnam soll es Glück bringen, sich an einer roten Ampel von einem Feuerwehrauto überfahren zu lassen",
-"Der Rührbesen, das Rührei und der Rührteig wurden im Rührgebiet erfunden",
-"Als der Erfinder des Wartezimmers seine Erfindung patentieren lassen wollte, ging er direkt in das Büro des Patenbeamten",
-"Küchenmesser haben in anderen Räumen nur 30-40 % ihrer Schneidekraft",
-"Eine Studie der Universitat Wien fand heraus, dass Männer, die zwischen Januar und Dezember geboren werden, eine höhere Wahrscheinlichkeit haben, Linkshander zu sein",
-"Jeder Mensch ist pro Tag für 0,000057 Sekunden unsichtbar",
-"Wenn die eigene Schwester einen Jungen zur Welt bringt, dann wird man Onkel. Wenn es jedoch ein Mädchen ist, wird man Tante",
-"Niederländer sind genetisch nicht dazu in der Lage, auf Berge zu klettern",
-"Aus Larmschutzgrunden darf man nach 21 Uhr sowie am Wochenende nicht mit Kanonen auf Spatzen schießen",
-"Einen zwolfseitigen Supermarkt nennen Mathematiker Dodekaedeka",
-"Das Adelsgeschlecht der Thurn und Taxis begründete ihr Vermögen mit dem Betrieb von Sporthallen und zahlreichen Mietwagenunternehmen",
-"Vor der Einführung der Kartoffel wurden Pommes in Europa aus Baumrinde hergestellt",
-"Briefumschläge werden knuspriger, wenn man das Porto erst nach dem Pürieren aufklebt",
-"Nicht einmal ein Zehntel aller in Deutschland verkauften Brausekopfdichtungen stammt aus natürlichem Anbau",
-"Im Jahr 791 n. Chr. wurde die bis dahin in Mitteleuropa gängige Praxis verboten. Kinder in Kessel mit Zaubertrank zu werfen, damit sie Superkräfte erhalten",
-"Seit 1977 gelten Kamele in der Antarktis als ausgerottet",
-"Das Wort \"Mörtel\" haben sich Bauarbeiter im 17. Jahrhundert ausgedacht, weil sie keine Lust mehr hatten, ständig, \"Mauersteinverbundpaste\" zu sagen",
-"Walnüsse schlafen immer nur mit einer Nusshälfte, während die andere wach ist",
+const inputPromptArray = [
+"amtlich einen umhängen",
+"einen in die Brause schütten",
+"ein Züchtbier servieren",
+"einen in die Fresse schäumen lassen",
+"den Kopf umrühren",
+"die Wäsche abziehen lassen",
+"glimpflich die Säfte mischen",
+"einen in die Schüssel rühren",
+"einen aufsteigen lassen",
+"den Kübel düngen ",
+"einen in den Hals schütten",
+"die Konserven öffnen",
+"ordentlich einen reinlöten",
+"wie ein Achtarmiger einen reinorgeln",
+"einen hinter die Rüstung römern",
+"ein Export importieren",
+"einen aus der Fassung befreien",
+"den Helm lackieren",
+"die Kontakte feucht legen",
+"einen Henkel vom Humpen brechen",
+"den Biergurt aufbinden",
+"einen in die Drahtseile hängen",
+"den Maschinenraum fluten", 
+"die Batterie abklemmen",
+"die Festplatte formatieren",
+"die Rinne verzinken",
+"die Tapete bekleistern",
+"die Rüstung einfetten",
+"den Vollkornsprudel ins Feinkostegewölbe schütten",
+"einen zwischen die Kiemen peitschen",
+"den Ölstand prüfen",
+"eine Nierenspülung vornehmen",
+"völlig wegjodeln",
+"Hopfen und Malz wiederfinden",
+"einen hinter die Buche fichten",
+"Kaltgetränke zurück ins Fass pressen",
+"Krawallbrause hinter die Fresspappe kippen",
+"den Propeller verbiegen",
+"einen hinter die Borke kiefern",
+"einen in die Schrankwand nageln",
+"das Blechdach abdecken",
+"gemeinschaftlich die Ziege blind machen",
+"die Gardienen zuziehen",
+"die eigene Laterne austreten",
+"die Hirnwindungen entknoten",
+"einen Getränkeunfall verursachen",
+"ehrenlos wegschachteln",
+"auf Kommando Dichtschußß gehen",
+"den Absturz kalibrieren",
+"die Posaune trompeten",
+"den Schinken pökeln",
+"die Grenzen verzollen",
+"Das Stirnband von innen besticken",
+"einen ins Toupé föhnen",
+"die Muttern lösen",
+"die Muttersprache entwöhnen",
+"ein paar Braunglasraketen zünden",
+"einen hinter die Tannen harzen",
+"das Etui vollstiften",
+"den Durchblick vollspachteln",
+"den Salamander aus der Hose locken",
+"den Köcher vollschießen",
+"das Pesthaus entlüften",
+"den Stromkreis überbrücken", 
+"den Motor überhitzen",
 ]
 const inputLength = inputPromptArray.length;
-const inputTemperature = (Math.random() * 0.1) + 0.7; // temperature for generating the joke
+const inputTemperature = (Math.random() * 0.1) + 0.5; // temperature for generating the joke
 const splitChar = "*"; // character to split the generated output into an array
 const tokenCount = 500; // desired length of the generated text in tokens
 
@@ -66,11 +92,11 @@ const tokenCount = 500; // desired length of the generated text in tokens
  * @returns {string} The input prompt string.
  */
 function createInputPrompt (inputPromptArray){
-  var inputPrompt = "";
+  var inputPrompt = "Eine Liste aller Sprüche, die man statt 'einen trinken gehen' sagen könnte: bzw. 'einen trinken gehen' mal anders:";
   // shuffle the inputPromptArray all the time
   inputPromptArray.sort(() => Math.random() - 0.5);
   for (var i = 0; i < inputPromptArray.length; i++){
-    inputPrompt += inputPromptArray[i] + "*";
+    inputPrompt += "Hey, wollen wir uns heute Abend " + inputPromptArray[i] + "?" + splitChar;
   }
   return inputPrompt;
 }
@@ -252,13 +278,16 @@ function keywords2Bg(text){
   if (keywords == "")
     keywords = "nice sunset";
 
+  // delete "Abend" and "heute" from keywords
+  keywords = keywords.replace("Abend,", "");
+  keywords = keywords.replace("heute,", "");
   // generate and set random background
   randomBg(keywords);
 
 }  
 
 function randomFont(){
-  array = ["Roboto"]
+  array = ["Josefin Slab", "Bodoni Moda", "Bitter", "Amatic SC", "Antic Slab", "Yeseva One"]
   random = Math.floor(Math.random() * array.length);
   return array[random];
 }

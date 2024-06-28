@@ -16,16 +16,17 @@
 
   }
 
+  body{
+  }
   
- 
   #joke_wrapper{
     width: 100%;
     display: grid;
     color: white;
     text-shadow: 0 0 15px black;
     text-align: end;
-    width: 60vw;
-    margin: 0 20vw;
+    width: 80vw;
+    margin: 0 10vw;
     font-size: min(5vw, 5vh);
     position: absolute;
     top: 45%;
@@ -35,11 +36,11 @@
   }
   
   #joke{
-    font-size: calc(1.6vw + 1.6vh + 1.6vmin);
+    font-size: calc(2vw + 2vh + 2vmin);
     overflow-wrap: break-word;
     word-wrap: break-word;
     hyphens: auto;
-    text-align: left;
+    text-align: center;
  
   }
   
@@ -58,7 +59,7 @@
     cursor: pointer;
     border-radius: 20px;
     margin: 0.5em;
-    font-family: Roboto;
+    font-family: Josefin Slab;
     text-align: center;
   }
   
