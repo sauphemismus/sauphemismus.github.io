@@ -34,13 +34,21 @@
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
     position: relative;
-    width: 80vmin;
-    height: 80vmin;
+    
+    width: 90vmin;
+    height: 90vmin; /* portrait orientation */
+ 
+
+  
     /* background-color: rgb(182, 158, 3); */
     display: flex;
     align-content: center;
     border: 5px solid rgb(177, 32, 1);
     border-radius: 10px;
+    @media (orientation: landscape) {
+      width: 70vmin;
+      height: 70vmin; /* landscape orientation */
+    }
   }
   
   #joke {
@@ -133,7 +141,7 @@
   }
   
   button:hover{
-    background-color: #000000e7;
+    background-color: rgb(105, 21, 2);
   }
   
   #btn{
@@ -152,7 +160,7 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    position: fixed;
+    /* position: fixed; */
     right: 0;
     top: 0;
     z-index: 99999;

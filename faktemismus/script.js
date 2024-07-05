@@ -278,7 +278,7 @@ function onButtonClick(){
   var loader = document.getElementsByClassName("loader")[0];
   loader.style.display = "block";
 
-  var div = document.getElementById("joke_wrapper");
+  var div = document.getElementById("joke");
   div.style.display = "none";
   //div.style.fontFamily = randomFont();
 
@@ -322,23 +322,15 @@ function updateJoke(input_joke){
   joke.innerHTML = joke_show
   //joke.style.fontFamily = randomFont();
   
-  var jokeContainer = document.getElementById("joke");
-  var screenWidth = window.innerWidth;
-  var screenHeight = window.innerHeight;
-  var jokeSize = 0;
-
-  if (screenWidth < screenHeight) {
-    jokeSize = screenWidth * 0.6;
-  } else {
-    jokeSize = screenHeight * 0.7;
-  }
+  
+  
 
   //jokeContainer.style.width = jokeSize + "px";
   //jokeContainer.style.height = jokeSize + "px";
 
   //jokeContainer.style.fontSize = (1 - (joke_show.length / 100)) * (maxFontSize - minFontSize) + minFontSize + "px";
   
-
+  joke.style.display = "block";
   console.log("joke_show:", joke_show, "length:", joke_show.length)
   
   
