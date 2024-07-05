@@ -360,12 +360,12 @@ function share(){
         //link.download = 'myJoke.jpeg';
         //link.href = dataUrl;
         //link.click();
-        /*
+        
         var meta = document.createElement('meta');
         meta.httpEquiv = "og:image";
-        meta.content = "https://humoropedia.com/wp-content/uploads/2014/08/monkey-awesome-photo.jpg"; //dataUrl;
+        meta.content = dataUrl;
         document.getElementsByTagName('head')[0].appendChild(meta);
-        */
+        
         var joke = document.getElementById("joke").innerHTML;
         var site = "https://sauphemismus.github.io/faktemismus/";
         var link = "whatsapp://send?text=" + encodeURIComponent(joke) + "%3A%3A" + site;
