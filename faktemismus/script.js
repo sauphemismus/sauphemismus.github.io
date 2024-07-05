@@ -363,7 +363,7 @@ function share(){
         
         var meta = document.createElement('meta');
         meta.httpEquiv = "og:image";
-        meta.content = dataUrl;
+        meta.content = "https://www.istockphoto.com/de/foto/junge-frau-mit-blick-auf-kaputas-strand-lykien-k%C3%BCste-t%C3%BCrkei-gm1487786166-513147575?utm_source=pixabay&utm_medium=affiliate&utm_campaign=SRP_image_sponsored&utm_content=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Ffree%2520images%2F&utm_term=+images";//dataUrl;
         document.getElementsByTagName('head')[0].appendChild(meta);
         
         var joke = document.getElementById("joke").innerHTML;
