@@ -104,6 +104,10 @@ function generateJoke(input, inputCount, temperature, token_count, splitChar, fo
   ).then((response) => {
     output = JSON.stringify(response);
     console.log(output);
+    if (output.includes("Rate limit reached")) {
+      window.alert("Rate limit reached. You reached free usage limit (reset hourly). Come back later. Maybe go for a walk or read a book in the meantime.");
+      return;
+    }
     output = output.replace(/\n/g, splitChar);
     output = output.replace(/\\n/gm, splitChar);
     output = output.replace(/[\[\]\{\}\\]/g, "");
@@ -121,8 +125,7 @@ function generateJoke(input, inputCount, temperature, token_count, splitChar, fo
     followFunction(outArray[inputCount]);
     
   }).catch((error) => {
-    error = JSON.stringify(error);
-    window.alert("Whoops, something went wrong: " + error);
+    window.alert(JSON.stringify(error))
   })
 }
 
@@ -161,7 +164,7 @@ function generateKeywords(input, followFunction){
     
     followFunction(outArray_X);
 
-  }).catch((error) => {window.alert(error)})
+  }).catch((error) => {window.alert(JSON.stringify(error))})
   
 }
 
