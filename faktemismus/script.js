@@ -28,8 +28,8 @@ const inputPromptArray = ["Seinen Hit \"I'm Still Standing\" schrieb Elton John 
 "Mit den ersten Lichtstrahlen des anbrechendes Tages zerfallen Bäcker zu Mehlstaub",
 "Die ursprüngliche Version des Caipirinha enthielt pro Glas 1-2 Piranhas. Diese werden heutzutage aus versicherungstechnischen Gründen in der Regel durch Limettenstücke ersetzt",
 "Ein Wesen von kleiner bis mittlerer Große ohne ein besonders erschreckendes Äußeres nennt man \"Getüm\"",
-"Bevor es eine offentliche Mullabfuhr gab, mussten alle ihren Abfall mit der Post zur Mülldeponie schicken",
-"Frisch gepresster Zitronensaft ist im Kühlschrank 1 - 2 Tage haltbar. Für längere Haltbarkeit kann man zur Konservierung einen Spritzer Zitronensaft dazu geben",
+"Bevor es eine öffentliche Müllabfuhr gab, mussten alle ihren Abfall mit der Post zur Mülldeponie schicken",
+"Frisch gepresster Zitronensaft ist im Kühlschrank 1-2 Tage haltbar. Für längere Haltbarkeit kann man zur Konservierung einen Spritzer Zitronensaft dazu geben",
 "Bis 1987 war es in Mehrfamilienhausern Pflicht, neben einem Hausmeister noch einen Hausvizemeister zu haben",
 "Ein Tischler kann keine Stühle anfertigen",
 "Beim Schach gibt es genau 92 (also 7^3) mögliche Spielzüge",
@@ -38,7 +38,7 @@ const inputPromptArray = ["Seinen Hit \"I'm Still Standing\" schrieb Elton John 
 "Als der Erfinder des Wartezimmers seine Erfindung patentieren lassen wollte, ging er direkt in das Büro des Patenbeamten",
 "Küchenmesser haben in anderen Räumen nur 30-40 % ihrer Schneidekraft",
 "Eine Studie der Universitat Wien fand heraus, dass Männer, die zwischen Januar und Dezember geboren werden, eine höhere Wahrscheinlichkeit haben, Linkshander zu sein",
-"Jeder Mensch ist pro Tag für 0,000057 Sekunden unsichtbar",
+"Jeder Mensch ist pro Tag für 0,0057 Sekunden unsichtbar",
 "Wenn die eigene Schwester einen Jungen zur Welt bringt, dann wird man Onkel. Wenn es jedoch ein Mädchen ist, wird man Tante",
 "Niederländer sind genetisch nicht dazu in der Lage, auf Berge zu klettern",
 "Aus Larmschutzgrunden darf man nach 21 Uhr sowie am Wochenende nicht mit Kanonen auf Spatzen schießen",
@@ -258,7 +258,7 @@ function keywords2Bg(text){
 }  
 
 function randomFont(){
-  array = ["Roboto"]
+  array = ["Noto Sans"]
   random = Math.floor(Math.random() * array.length);
   return array[random];
 }
@@ -320,14 +320,60 @@ function updateJoke(input_joke){
     joke_show += ".";
   }
   joke.innerHTML = joke_show
-  joke.style.fontFamily = randomFont();
+  //joke.style.fontFamily = randomFont();
   
+  var jokeContainer = document.getElementById("joke");
+  var screenWidth = window.innerWidth;
+  var screenHeight = window.innerHeight;
+  var jokeSize = 0;
+
+  if (screenWidth < screenHeight) {
+    jokeSize = screenWidth * 0.6;
+  } else {
+    jokeSize = screenHeight * 0.7;
+  }
+
+  //jokeContainer.style.width = jokeSize + "px";
+  //jokeContainer.style.height = jokeSize + "px";
+
+  //jokeContainer.style.fontSize = (1 - (joke_show.length / 100)) * (maxFontSize - minFontSize) + minFontSize + "px";
+  
+
   console.log("joke_show:", joke_show, "length:", joke_show.length)
   
   
   toggleBackgroundAndShowNew();
 
 }
+
+function share(){
+  var jokeContainer = document.getElementById("joke_wrapper");
+  //domtoimage.toPng(node)
+  /*domtoimage.toBlob(jokeContainer)
+    .then(function (blob) {
+        window.saveAs(blob, 'myJoke.png');
+    });*/
+
+  domtoimage.toJpeg(jokeContainer, { quality: 0.95 })
+    .then(function (dataUrl) {
+        //var link = document.createElement('a');
+        //link.download = 'myJoke.jpeg';
+        //link.href = dataUrl;
+        //link.click();
+        /*
+        var meta = document.createElement('meta');
+        meta.httpEquiv = "og:image";
+        meta.content = "https://humoropedia.com/wp-content/uploads/2014/08/monkey-awesome-photo.jpg"; //dataUrl;
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        */
+        var joke = document.getElementById("joke").innerHTML;
+        var site = "https://sauphemismus.github.io/faktemismus/";
+        var link = "whatsapp://send?text=" + encodeURIComponent(joke) + "%3A%3A" + site;
+
+  window.open(link);
+    });
+}
+
 
 
 /**
