@@ -196,11 +196,13 @@ async function query(data, api_url) {
 async function randomBg(topic) {
   const width = document.documentElement.clientWidth + 10;
   const height = document.documentElement.clientHeight + 10;
-  const orientation = width > height ? 'horizontal' : 'vertical';
+  // const orientation = width > height ? 'horizontal' : 'vertical';
+  const orientation = 'all';
   
+  topic = topic.replace(/ /g, '+').replace(/,/g, '+');
   console.log(`Fetching image for topic: ${topic}` + " \torientation: " + orientation);
   // replace all spaces with '+' for the API call
-  topic = topic.replace(/ /g, '+');
+  
 
   const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=3`);
   const data = await response.json();
@@ -214,6 +216,13 @@ async function randomBg(topic) {
   div.style.backgroundSize = 'cover'; 
   div.style.backgroundRepeat = 'no-repeat'; 
   div.style.backgroundPosition = 'center';
+
+  // for the bg inside the joke-wrapper div
+  const div_inner = background ? document.getElementById("bg1-inner") : document.getElementById("bg2-inner");
+  div_inner.style.backgroundImage = `url('${imageUrl}')`;
+  div_inner.style.backgroundSize = 'cover';
+  div_inner.style.backgroundRepeat = 'no-repeat';
+  div_inner.style.backgroundPosition = 'center';
 }
 
 
@@ -378,12 +387,18 @@ function toggleBackgroundAndShowNew() {
   if (background) {
     bg = document.getElementById("bg1");
     nbg = document.getElementById("bg2");
+    bg_inner = document.getElementById("bg1-inner");
+    nbg_inner = document.getElementById("bg2-inner");
   } else {
     bg = document.getElementById("bg2");
     nbg = document.getElementById("bg1");
+    bg_inner = document.getElementById("bg2-inner");
+    nbg_inner = document.getElementById("bg1-inner");
   }
   bg.style.zIndex = "-10";
   nbg.style.zIndex = "-11";
+  bg_inner.style.zIndex = "-8";
+  nbg_inner.style.zIndex = "-9";
   nbg.style.backgroundImage = "";
   background = !background;
 

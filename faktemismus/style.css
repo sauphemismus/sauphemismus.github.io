@@ -9,17 +9,29 @@
     position: fixed;
     width: 110%;	
     height: 110%;
-    top: -2.5px;
-    left: -2.5px;
+    top: -5%;
+    left: -5%;
     z-index: -1;
     object-fit: cover;
     transition: all 0.5s ease;
-    filter: contrast(0.9) sepia(0.5) brightness(0.5);
+    filter:  brightness(0.3) blur(15px);
+    
+  }
+
+  .bg_div-inner {
+    position: absolute;
+    width: 100%;	
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    filter:  brightness(0.5);
     
   }
 
   body {
-    /* font-family: 'Noto Sans', sans-serif; */
     display: flex;
     justify-content: space-evenly ;
     align-items: center;
@@ -34,39 +46,30 @@
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
     position: relative;
-    
     width: 90vmin;
-    height: 90vmin; /* portrait orientation */
- 
-
-  
-    /* background-color: rgb(182, 158, 3); */
+    height: 90vmin; 
     display: flex;
     align-content: center;
     border: 5px solid rgb(177, 32, 1);
     border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.637);
     @media (orientation: landscape) {
       width: 70vmin;
-      height: 70vmin; /* landscape orientation */
+      height: 70vmin; 
     }
   }
   
   #joke {
     color: white;
     text-shadow: 0 0 15px black;
-
-    font-size: 4vmin; 
-    @media (orientation: landscape) {
-      font-size: 3vmin; 
-    }
     text-align: left;
     text-wrap: wrap;
     width: 	  80%;
     margin: 0 10%;
-    
-  
-   
-    
+    font-size: 4vmin; 
+    @media (orientation: landscape) {
+      font-size: 3vmin; 
+    }
   }
 
   #logo-wrapper {
@@ -89,14 +92,12 @@
 
   #logo-icon {
     position: relative;
+    color: white;
     font-size: 8vmin;
     @media (orientation: landscape) {
       font-size: 6.2vmin; 
     }
-    color: white;
   }
-
- 
   
   #bottom_element {
     position: absolute;
@@ -116,13 +117,12 @@
 
   #title {
     color: white;
+    padding-bottom: 0.3vmin;
     font-size: 4vmin;
     @media (orientation: landscape) {
       font-size: 3.1vmin; 
     }
-    padding-bottom: 0.3vmin;
   }
-
 
   #link {
     color: white;
@@ -130,21 +130,17 @@
     text-shadow: 0 0 15px black;
     padding-top: 1%;
     font-weight: 300;
-    font-size: 2vmin;
+    font-size: 2.3vmin;
     @media (orientation: landscape) {
-      font-size: 1.5vmin; 
+      font-size: 1.79vmin; 
     }
   }
   
   
   button{
     color: white;
-    background-color:  rgb(135, 25, 0);
+    background-color:  rgb(177, 32, 1);
     padding: 1em 1.2em;
-    font-size: 4vmin;
-    @media (orientation: landscape) {
-      font-size: 2.5vmin; 
-    }
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
     border: none;
@@ -153,17 +149,18 @@
     border-radius: 10px;
     margin: 0.5em;
     text-align: center;
+    font-size: 4vmin;
+    @media (orientation: landscape) {
+      font-size: 2.5vmin; 
+    }
   }
   
   button:hover{
-    background-color: rgb(105, 21, 2);
+    background-color: rgb(177, 32, 1);
   }
   
   #btn{
     width: 80vmin;
-    /* padding-bottom: 2em; */
-    /* position: absolute;
-    bottom: 0; */
     display: flex;
     justify-content: center;
   }
@@ -175,7 +172,6 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    /* position: fixed; */
     right: 0;
     top: 0;
     z-index: 99999;
