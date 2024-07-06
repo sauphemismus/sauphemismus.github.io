@@ -58,7 +58,7 @@ var autor_g = false;
 var background = false;
 
 
-document.onload = randomBg();
+document.onload = randomBg("Nature+landscape");
 document.onload = init();
 document.onload = document.getElementById("history").innerHTML = "";
 
@@ -73,7 +73,7 @@ async function randomBg(topic) {
   // replace all spaces with '+' for the API call
   topic = topic.replace(/ /g, '+');
 
-  const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=3`);
+  const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=20`);
   const data = await response.json();
   
   // chose a random image from the response (depending on the number of hits)
@@ -101,7 +101,7 @@ function init(){
   var loader = document.getElementsByClassName("loader")[0];
   loader.style.display = "block";
 
-  randomBg();
+  randomBg("Nature+landscape");
 
   var div = document.getElementById("bibelspruch");
   div.style.display = "none";
