@@ -414,12 +414,16 @@ function toggleBackgroundAndShowNew() {
 
 function download(){
   var jokeContainer = document.getElementById("joke_wrapper");
+  var currentBorderRadius = jokeContainer.style.borderRadius;
+  jokeContainer.style.borderRadius = "0";
+  
   domtoimage.toPng(jokeContainer)
     .then(function (dataUrl) {
         var link = document.createElement('a');
         link.download = 'myJoke.png';
         link.href = dataUrl;
         link.click();
+        jokeContainer.style.borderRadius = currentBorderRadius;
     });
 }
 
