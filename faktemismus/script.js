@@ -412,6 +412,17 @@ function toggleBackgroundAndShowNew() {
   running = false;
 }
 
+function download(){
+  var jokeContainer = document.getElementById("joke_wrapper");
+  domtoimage.toPng(jokeContainer)
+    .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'myJoke.png';
+        link.href = dataUrl;
+        link.click();
+    });
+}
+
 // --------------------------------------------------------------------------------------------
 // end of version 1
 
