@@ -121,6 +121,7 @@ function generateJoke(input, inputCount, temperature, token_count, splitChar, fo
       //min_length: token_count,
       //max_length: token_count,
       temperature: temperature,
+      max_new_tokens: 70,
     },
     "options": {
       wait_for_model: true,

@@ -4,9 +4,9 @@
 
 // define global variables
 API_KEY = "Bearer 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";
-API_URL_JOKE = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1";
+//API_URL_JOKE = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1";
 //API_URL_JOKE = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta";
-//API_URL_JOKE = "https://api-inference.huggingface.co/models/google/gemma-7b";
+API_URL_JOKE = "https://api-inference.huggingface.co/models/google/gemma-7b";
 //API_URL_JOKE = "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B";
 
 API_URL_KEYWORDS = "https://api-inference.huggingface.co/models/vblagoje/bert-english-uncased-finetuned-pos";
@@ -34,6 +34,7 @@ function generateJoke(input, inputCount, temperature, token_count, splitChar, fo
       //min_length: token_count,
       //max_length: token_count,
       temperature: temperature,
+      max_new_tokens: 50,
     },
     "options": {
       wait_for_model: true,

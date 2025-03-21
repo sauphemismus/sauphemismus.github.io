@@ -1,6 +1,7 @@
 // Define global variables
 const API_KEY = "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";
-const API_URL_JOKE = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1";
+//const API_URL_JOKE = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1";
+const API_URL_JOKE = "https://api-inference.huggingface.co/models/google/gemma-7b";
 const API_URL_KEYWORDS = "https://api-inference.huggingface.co/models/vblagoje/bert-english-uncased-finetuned-pos";
 
 // Buffered joke and background variables
@@ -18,6 +19,7 @@ const jokeInput = {
   "inputs": inputPrompt,  
   "parameters": {
     temperature: temperature,
+    max_new_tokens: 70,
   },
   "options": {
     wait_for_model: true,

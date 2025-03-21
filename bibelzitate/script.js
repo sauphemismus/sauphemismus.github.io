@@ -1,4 +1,29 @@
 // generate from input----------------------------------------------------------
+async function query(data) {
+  const response = await fetch(
+    //"https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
+    //"https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
+    //"https://api-inference.huggingface.co/models/openai-community/gpt2-xl",
+    //"https://api-inference.huggingface.co/models/bigscience/bloom",
+
+    //"https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta",
+    
+    "https://api-inference.huggingface.co/models/google/gemma-7b",
+
+    //"https://api-inference.huggingface.co/models/benjamin/gpt2-wechsel-german",
+    //"https://api-inference.huggingface.co/models/dbmdz/german-gpt2",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer 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",
+      },
+      method: "POST",
+      body: JSON.stringify(data),
+    }
+  );
+  const result = await response.json();
+  return result;
+}
 
 function generate(input, inputCount, temperature, token_count, splitChar, followFunction, too_long){
 
@@ -9,12 +34,14 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
       //min_length: token_count,
       //max_length: token_count,
       temperature: temperature,
+      max_new_tokens: 70,
     },
     "options": {
       use_cache: false,
       wait_for_model: true,
     },
   }).then((response) => {
+    console.log(JSON.stringify(response));
     output = JSON.stringify(response);
     output = output.replace(/[\[\]\{\}\\"]/g, "");
     output = output.replace(/\\n/gm, " ");
@@ -32,24 +59,7 @@ function generate(input, inputCount, temperature, token_count, splitChar, follow
   }).catch((error) => {})
 }
 
-async function query(data) {
-  const response = await fetch(
-    //"https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-1.3B",
-    //"https://api-inference.huggingface.co/models/mistralai/Mistral-7B-v0.1",
-    //"https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta",
-    "https://api-inference.huggingface.co/models/google/gemma-7b",
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer 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",
-      },
-      method: "POST",
-      body: JSON.stringify(data),
-    }
-  );
-  const result = await response.json();
-  return result;
-}
+
 
 // generate from input----------------------------------------------------------
 var running = false;
@@ -75,6 +85,7 @@ async function randomBg(topic) {
 
   const response = await fetch(`https://pixabay.com/api/?key=44651696-fb16f33f4e495b9a42868696c&q=${topic}&orientation=${orientation}&image_type=photo&per_page=20`);
   const data = await response.json();
+  console.log("fezched image");
   
   // chose a random image from the response (depending on the number of hits)
   const randomIndex = Math.floor(Math.random() * data.hits.length);
@@ -94,6 +105,8 @@ function randomFont(){
 }
 
 function init(){
+
+  console.log("init")
   if(running)
     return;
   
@@ -102,6 +115,7 @@ function init(){
   loader.style.display = "block";
 
   randomBg("Nature+landscape");
+  console.log("fetched bg")
 
   var div = document.getElementById("bibelspruch");
   div.style.display = "none";

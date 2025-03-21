@@ -35,6 +35,7 @@ function generateJoke(input, inputCount, temperature, token_count, splitChar, fo
       //min_length: token_count,
       //max_length: token_count,
       temperature: temperature,
+      max_new_tokens: 70,
     },
     "options": {
       wait_for_model: true,
@@ -144,7 +145,7 @@ async function randomBg(topic) {
   const data = await response.json();
   
   // chose a random image from the response (depending on the number of hits)
-  const randomIndex = Math.floor(Math.random() * data.hits.length);
+  const randomIndex = Math.floor(Math.random() * data.hits.length) - 1;
   const imageUrl = data.hits[randomIndex].largeImageURL;
   
   const div = background ? document.getElementById("bg1") : document.getElementById("bg2");
