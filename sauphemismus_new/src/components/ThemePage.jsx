@@ -11,7 +11,7 @@ const ThemePage = () => {
   const { themeId } = useParams();
   const theme = themesData.themes[themeId];
   
-  const { currentText, getNextText, isLoading, hasShownFirstText } = useTextBuffer(theme);
+  const { currentText, getNextText, isLoading } = useTextBuffer(theme);
   const { backgroundImages, activeIndex, changeBackground } = useBackgroundManager(theme);
 
   const handleGenerate = async () => {
@@ -51,7 +51,7 @@ const ThemePage = () => {
             {isLoading ? (
               <Loader isVisible={true} />
             ) : (
-              hasShownFirstText && currentText && (
+              currentText && (
                 <div className="output-text">
                   <h2>{currentText}</h2>
                 </div>

@@ -1,23 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getRandomBackgroundImage, getRandomTopic } from '../services/pixabay';
-import { analyzePartOfSpeech } from '../services/huggingface';
+import { analyzePartOfSpeech, buildSearchKeywords } from '../services/huggingface';
+import { SEARCH_CONFIG } from '../config/searchConfig';
 
 export const useBackgroundManager = (theme) => {
   const [backgroundImages, setBackgroundImages] = useState(['', '']);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
 
-  // Load initial background
-  useEffect(() => {
-    if (theme && theme.backgroundTopics) {
-      const topic = getRandomTopic(theme.backgroundTopics);
-      loadBackgroundImage(topic, 0);
-    }
-  }, [theme]);
-
-  const loadBackgroundImage = useCallback(async (topic, index) => {
+  const loadBackgroundImage = useCallback(async (keywords, index) => {
     try {
-      const imageUrl = await getRandomBackgroundImage(topic);
+      const imageUrl = await getRandomBackgroundImage(keywords);
       if (imageUrl) {
         setBackgroundImages(prev => {
           const newImages = [...prev];
@@ -30,36 +23,50 @@ export const useBackgroundManager = (theme) => {
     }
   }, []);
 
+  // Load initial background
+  useEffect(() => {
+    if (theme && theme.backgroundTopics) {
+      const topic = getRandomTopic(theme.backgroundTopics);
+      console.log('Loading initial background with topic:', topic);
+      loadBackgroundImage(topic, 0);
+    }
+  }, [theme, loadBackgroundImage]);
+
   const changeBackground = useCallback(async (generatedText = null) => {
     if (isChanging) return;
     
     setIsChanging(true);
     const nextIndex = activeIndex === 0 ? 1 : 0;
     
-    let topic;
+    let searchKeywords;
     
-    if (generatedText && theme.title === 'justgptthings') {
-      // For justgptthings, analyze the generated text for keywords
+    if (generatedText) {
+      // Analyze the generated text for keywords using the new system
       try {
-        const keywords = await analyzePartOfSpeech(generatedText);
-        if (keywords.length > 0) {
-          // Use the first keyword or combine with theme topics
-          topic = keywords[0];
-        } else {
-          // Fallback to theme topics
-          topic = getRandomTopic(theme.backgroundTopics);
+        const posGroups = await analyzePartOfSpeech(generatedText);
+        
+        if (SEARCH_CONFIG.DEBUG_KEYWORDS) {
+          console.log('POS Analysis result:', posGroups);
+        }
+        
+        searchKeywords = buildSearchKeywords(posGroups, SEARCH_CONFIG.USE_MULTIPLE_KEYWORDS);
+        
+        if (SEARCH_CONFIG.DEBUG_KEYWORDS) {
+          console.log('Built search keywords:', searchKeywords);
         }
       } catch (error) {
         console.error('Error analyzing text for background:', error);
-        topic = getRandomTopic(theme.backgroundTopics);
+        searchKeywords = getRandomTopic(theme.backgroundTopics);
+        console.log('Error occurred, using theme topic:', searchKeywords);
       }
     } else {
-      // For other themes, use predefined topics
-      topic = getRandomTopic(theme.backgroundTopics);
+      // For initial load or when no text is provided, use predefined topics
+      searchKeywords = getRandomTopic(theme.backgroundTopics);
+      console.log('No text provided, using theme topic:', searchKeywords);
     }
     
-    console.log('Loading background for topic:', topic);
-    await loadBackgroundImage(topic, nextIndex);
+    console.log('Loading background for keywords:', searchKeywords);
+    await loadBackgroundImage(searchKeywords, nextIndex);
     
     // Smooth transition
     setTimeout(() => {
