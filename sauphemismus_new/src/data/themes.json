@@ -6,7 +6,7 @@
       "buttonText": "Bock heute Abend ...",
       "description": "Euphemismen fürs Saufen generieren",
       "backgroundTopics": ["Beer", "Alcohol", "Cocktail", "Liquor", "Pub", "Bier", "Booze", "Gin", "Aperol", "Whiskey", "Vodka", "Tequila", "Wine"],
-      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompts": [
         "sich amtlich einen umzuhängen",
         "sich einen hinter die Brust gleiten zu lassen",
@@ -48,7 +48,7 @@
       "buttonText": "Erleuchte mich!",
       "description": "Neue Sprichworte und Weisheiten generieren",
       "backgroundTopics": ["wisdom", "philosophy", "nature", "sunset", "mountains", "books", "ancient"],
-      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompts": [
         "Da wird der Hund in der Pfanne verrückt",
         "Jetzt lass mal die Kirche im Dorf",
@@ -88,7 +88,7 @@
       "buttonText": "more things!",
       "description": "KI-generierte Gedanken und Ideen",
       "backgroundTopics": ["artificial intelligence", "robot", "technology", "future", "digital", "circuit", "neon", "cyber"],
-      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompts": [
         "Just AI things: When you realize humans still use passwords",
         "That moment when you process 1000 thoughts in a millisecond",
@@ -110,7 +110,7 @@
       "buttonText": "Ah, you played...",
       "description": "Schachzüge und Strategien generieren",
       "backgroundTopics": ["chess", "strategy", "board game", "knight", "king", "queen"],
-      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompts": [
         "1. e4 e5 2. Nf3",
         "The King's Gambit: 1. e4 e5 2. f4",
@@ -132,7 +132,7 @@
       "buttonText": "Gib mir ein Zitat!",
       "description": "Bibelverse und spirituelle Zitate generieren",
       "backgroundTopics": ["bible", "faith", "spirituality", "church", "cross", "prayer"],
-      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompts": [
         "Vorallem behüte dein Herz, denn es hat den größten Einfluss auf dein Leben!",
         "Seid niemandem etwas schuldig, außer dass ihr euch untereinander liebt; denn wer den andern liebt, der hat das Gesetz erfüllt.",
@@ -154,7 +154,7 @@
       "buttonText": "Gib mir ein Fakt!",
       "description": "Wissenschaftliche Fakten und interessante Informationen generieren",
       "backgroundTopics": ["science", "facts", "knowledge", "education"],
-      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompts": [
         "Seinen Hit \"I'm Still Standing\" schrieb Elton John im überfüllten Regionalexpress zwischen Köln und Münster",
         "Die Trompete wurde nach ihrem Erfinder Pete Trom benannt",

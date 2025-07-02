@@ -1,19 +1,20 @@
 import { InferenceClient } from "@huggingface/inference";
 
-const client = new InferenceClient(import.meta.env.VITE_HUGGINGFACE_API_KEY);
+const client = new InferenceClient(import.meta.env.HUGGINGFACE_ACCESS_TOKEN);
 
 export const generateText = async (model, prompt, maxTokens = 100) => {
+  console.log('Generating text with model:', model);
   try {
     const output = await client.chatCompletion({
       model: model,
       messages: [
       {
-        role: "user",
+        role: "novita",
         content: prompt,
       },
       ],
       seed: Math.floor(Math.random() * 1000000),
-      provider: "hf-inference",
+      provider: "novita",
       parameters: {
       max_new_tokens: maxTokens,
       temperature: 0.7,
